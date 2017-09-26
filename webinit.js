@@ -17,14 +17,15 @@
  */
 
 var GLOBAL	 = require("./global.json");
-var JLog	 = require("./jjlog");
+const lib 	= require('kkutu-lib');
+var JLog	 = lib.jjlog;
 var Language = {
 	'ko_KR': require("../Web/lang/ko_KR.json"),
 	'en_US': require("../Web/lang/en_US.json")
 };
 
 function updateLanguage(){
-	var i, src;
+	let i, src;
 	
 	for(i in Language){
 		src = `../Web/lang/${i}.json`;
@@ -34,9 +35,9 @@ function updateLanguage(){
 	}
 }
 function getLanguage(locale, page, shop){
-	var i;
-	var L = Language[locale] || {};
-	var R = {};
+	let i;
+	let L = Language[locale] || {};
+	let R = {};
 	
 	for(i in L.GLOBAL) R[i] = L.GLOBAL[i];
 	if(shop) for(i in L.SHOP) R[i] = L.SHOP[i];
@@ -54,8 +55,8 @@ function page(req, res, file, data){
 	}else{
 		req.session.createdAt = new Date();
 	}
-	var addr = req.ip || "";
-	var sid = req.session.id || "";
+	let addr = req.ip || "";
+	let sid = req.session.id || "";
 	
 	data.published = global.isPublic;
 	data.lang = req.query.locale || "ko_KR";
@@ -91,8 +92,8 @@ function page(req, res, file, data){
 }
 exports.init = function(Server, shop){
 	Server.get("/language/:page/:lang", function(req, res){
-		var page = req.params.page.replace(/_/g, "/");
-		var lang = req.params.lang;
+		let page = req.params.page.replace(/_/g, "/");
+		let lang = req.params.lang;
 		
 		if(page.substr(0, 2) == "m/") page = page.slice(2);
 		if(page == "portal") page = "kkutu";

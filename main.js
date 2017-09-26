@@ -16,36 +16,37 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-var WS		 = require("ws");
-var Express	 = require("express");
-var Exession = require("express-session");
-var Redission= require("connect-redis")(Exession);
-var Redis	 = require("redis");
-var Parser	 = require("body-parser");
-var DDDoS	 = require("dddos");
-var Server	 = Express();
-var DB		 = require("./db");
-var JAuth	 = require("../sub/jauth");
-var JLog	 = require("../sub/jjlog");
-var WebInit	 = require("../sub/webinit");
-var GLOBAL	 = require("../sub/global.json");
-var Const	 = require("../const");
+const WS		 = require("ws");
+const Express	 = require("express");
+const Exession = require("express-session");
+const Redission = require("connect-redis")(Exession);
+const Redis	 = require("redis");
+const Parser	 = require("body-parser");
+const DDDoS	 = require("dddos");
+const Server	 = Express();
+const DB		 = require("./db");
+const lib 	= require('kkutu-lib');
+const JAuth	 = lib.jauth;
+const JLog	 = lib.jjlog;
+const WebInit	 = require('./webinit.js');
+const GLOBAL	 = require("./global.json");
+const Const	 = require("./const");
 
-var Language = {
+const Language = {
 	'ko_KR': require("./lang/ko_KR.json"),
 	'en_US': require("./lang/en_US.json")
 };
-var ROUTES = [
+const ROUTES = [
 	"major", "consume", "admin"
 ];
-var page = WebInit.page;
-var gameServers = [];
+const page = WebInit.page;
+const gameServers = [];
 
 WebInit.MOBILE_AVAILABLE = [
 	"portal", "main", "kkutu"
 ];
 
-require("../sub/checkpub");
+lib.checkpub;
 
 JLog.info("<< KKuTu Web >>");
 Server.set('views', __dirname + "/views");
@@ -85,7 +86,7 @@ Server.use(DDDoS.express());*/
 WebInit.init(Server, true);
 DB.ready = function(){
 	setInterval(function(){
-		var q = [ 'createdAt', { $lte: Date.now() - 3600000 * 12 } ];
+		let q = [ 'createdAt', { $lte: Date.now() - 3600000 * 12 } ];
 		
 		DB.session.remove(q).on();
 	}, 600000);
@@ -98,11 +99,11 @@ DB.ready = function(){
 	JLog.success("DB is ready.");
 	
 	DB.kkutu_shop_desc.find().on(function($docs){
-		var i, j;
+		let i, j;
 		
 		for(i in Language) flush(i);
 		function flush(lang){
-			var db;
+			let db;
 			
 			Language[lang].SHOP = db = {};
 			for(j in $docs){
@@ -113,14 +114,15 @@ DB.ready = function(){
 	Server.listen(80);
 };
 Const.MAIN_PORTS.forEach(function(v, i){
-	var KEY = process.env['WS_KEY'];
+	let KEY = process.env['WS_KEY'];
 	
-	gameServers[i] = new GameClient(KEY, `ws://127.0.0.2:${v}/${KEY}`);
+	gameServers[i] = new GameClient(i, `${v}/${KEY}`);
 });
 function GameClient(id, url){
-	var my = this;
+	let my = this;
 	
 	my.id = id;
+	console.log(id);
 	my.socket = new WS(url, { perMessageDeflate: false });
 	
 	my.send = function(type, data){
@@ -141,8 +143,8 @@ function GameClient(id, url){
 		delete my.socket;
 	});
 	my.socket.on('message', function(data){
-		var _data = data;
-		var i;
+		let _data = data;
+		let i;
 		
 		data = JSON.parse(data);
 		
@@ -163,7 +165,7 @@ ROUTES.forEach(function(v){
 	require(`./routes/${v}`).run(Server, WebInit.page);
 });
 Server.get("/", function(req, res){
-	var server = req.query.server;
+	let server = req.query.server;
 	
 	if(req.query.code){ // 네이버 토큰
 		req.session.authType = "naver";
@@ -175,7 +177,7 @@ Server.get("/", function(req, res){
 		res.redirect("/register");
 	}else{
 		DB.session.findOne([ '_id', req.session.id ]).on(function($ses){
-			// var sid = (($ses || {}).profile || {}).sid || "NULL";
+			// let sid = (($ses || {}).profile || {}).sid || "NULL";
 			if(global.isPublic){
 				onFinish($ses);
 				// DB.jjo_session.findOne([ '_id', sid ]).limit([ 'profile', true ]).on(onFinish);
@@ -186,7 +188,7 @@ Server.get("/", function(req, res){
 		});
 	}
 	function onFinish($doc){
-		var id = req.session.id;
+		let id = req.session.id;
 		
 		if($doc){
 			req.session.profile = $doc.profile;
@@ -220,7 +222,7 @@ Server.get("/", function(req, res){
 	}
 });
 Server.get("/servers", function(req, res){
-	var list = [];
+	let list = [];
 	
 	gameServers.forEach(function(v, i){
 		list[i] = v.seek;
@@ -232,9 +234,9 @@ Server.get("/login", function(req, res){
 	if(global.isPublic){
 		page(req, res, "login", { '_id': req.session.id, 'text': req.query.desc });
 	}else{
-		var now = Date.now();
-		var id = req.query.id || "ADMIN";
-		var lp = {
+		let now = Date.now();
+		let id = req.query.id || "ADMIN";
+		let lp = {
 			id: id,
 			title: "LOCAL #" + id,
 			birth: [ 4, 16, 0 ],
@@ -263,7 +265,7 @@ Server.get("/register", function(req, res){
 	if(!req.session.token) return res.sendStatus(400);
 	
 	JAuth.login(req.session.authType, req.session.token, req.session.id, req.session.token2).then(function($profile){
-		var now = Date.now();
+		let now = Date.now();
 		
 		if($profile.error) return res.sendStatus($profile.error);
 		if(!$profile.id) return res.sendStatus(401);
@@ -288,7 +290,7 @@ Server.post("/login/google", function(req, res){
 	res.sendStatus(200);
 });
 Server.post("/session", function(req, res){
-	var o;
+	let o;
 	
 	if(req.session.profile) o = {
 		authType: req.session.authType,

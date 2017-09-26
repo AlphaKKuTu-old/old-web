@@ -18,8 +18,9 @@
 
 var Web		 = require("request");
 var MainDB	 = require("../db");
-var JLog	 = require("../../sub/jjlog");
-var Const	 = require("../../const");
+const lib 	= require('kkutu-lib');
+var JLog	 = lib.jjlog;
+var Const	 = require("../const");
 
 function obtain($user, key, value, term, addValue){
 	var now = (new Date()).getTime();

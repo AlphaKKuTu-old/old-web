@@ -16,16 +16,17 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-var MainDB	 = require("../db");
-var JLog	 = require("../../sub/jjlog");
+const MainDB	 = require("../db");
+const lib 	= require('kkutu-lib');
+const JLog	 = lib.jjlog;
 
 exports.run = function(Server, page){
 
 Server.post("/consume/:id", function(req, res){
 	if(!req.session.profile) return res.json({ error: 400 });
-	var uid = req.session.profile.id;
-	var gid = req.params.id;
-	var isDyn = gid.charAt() == '$';
+	let uid = req.session.profile.id;
+	let gid = req.params.id;
+	let isDyn = gid.charAt() == '$';
 	
 	MainDB.users.findOne([ '_id', uid ]).on(function($user){
 		if(!$user) return res.json({ error: 400 });
