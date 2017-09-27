@@ -48,22 +48,25 @@ WebInit.MOBILE_AVAILABLE = [
 
 lib.checkpub;
 
+const session_configure = {
+	store: new Redission({
+		client: Redis.createClient(),
+		ttl: 3600 * 12
+	}),
+	secret: 'kkutu',
+	resave: false,
+	saveUninitialized: true
+};
+if(!GLOBAL.REDIS) {
+	delete session_configure.store;
+}
+
 JLog.info("<< KKuTu Web >>");
 Server.set('views', __dirname + "/views");
 Server.set('view engine', "pug");
 Server.use(Express.static(__dirname + "/public"));
 Server.use(Parser.urlencoded({ extended: true }));
-Server.use(Exession({
-	/* use only for redis-installed
-	
-	store: new Redission({
-		client: Redis.createClient(),
-		ttl: 3600 * 12
-	}),*/
-	secret: 'kkutu',
-	resave: false,
-	saveUninitialized: true
-}));
+Server.use(Exession(session_configure));
 /* use this if you want
 
 DDDoS = new DDDoS({
@@ -114,7 +117,7 @@ DB.ready = function(){
 	Server.listen(80);
 };
 Const.MAIN_PORTS.forEach(function(v, i){
-	let KEY = process.env['WS_KEY'];
+	let KEY = GLOBAL.WS_KEY;
 	
 	gameServers[i] = new GameClient(i, `${v}/${KEY}`);
 });
@@ -225,6 +228,7 @@ Server.get("/servers", function(req, res){
 	let list = [];
 	
 	gameServers.forEach(function(v, i){
+		console.log(v.seek);
 		list[i] = v.seek;
 	});
 	res.send({ list: list, max: Const.KKUTU_MAX });

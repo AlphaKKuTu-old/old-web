@@ -42,7 +42,7 @@ function getLanguage(locale, page, shop){
 	for(i in L.GLOBAL) R[i] = L.GLOBAL[i];
 	if(shop) for(i in L.SHOP) R[i] = L.SHOP[i];
 	for(i in L[page]) R[i] = L[page][i];
-	if(R['title']) R['title'] = `[${process.env['KKT_SV_NAME']}] ${R['title']}`;
+	if(R['title']) R['title'] = `[${GLOBAL.SERVER_NAME}] ${R['title']}`;
 	
 	return R;
 }
