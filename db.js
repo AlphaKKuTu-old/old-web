@@ -27,12 +27,16 @@ const Pub = lib.checkpub;
 const Lizard = lib.lizard;
 
 Pub.ready = function(isPub){
-	const Redis	 = require("redis").createClient({
+	let redisConfig = {
 		host: GLOBAL.REDIS_ADDR,
 		port: GLOBAL.REDIS_PORT,
 		password: GLOBAL.REDIS_PASS,
 		db: GLOBAL.REDIS_DB
-	});
+	};
+	if(redisConfig.password == '') {
+		delete redisConfig.password;
+	}
+	const Redis	 = require("redis").createClient(redisConfig);
 	const Pg = new PgPool({
 		user: GLOBAL.PG_USER,
 		password: GLOBAL.PG_PASS,
