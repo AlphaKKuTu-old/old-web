@@ -16,14 +16,19 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-var Web		 = require("request");
-var MainDB	 = require("../db");
+/**
+ * 볕뉘 수정사항:
+ * var 에서 let/const 로 변수 변경
+ */
+
+const Web		 = require("request");
+const MainDB	 = require("../db");
 const lib 	= require('kkutu-lib');
-var JLog	 = lib.jjlog;
-var Const	 = require("../const");
+const JLog	 = lib.jjlog;
+const Const	 = require("../const");
 
 function obtain($user, key, value, term, addValue){
-	var now = (new Date()).getTime();
+	let now = (new Date()).getTime();
 	
 	if(term){
 		if($user.box[key]){
@@ -35,7 +40,7 @@ function obtain($user, key, value, term, addValue){
 	}
 }
 function consume($user, key, value, force){
-	var bd = $user.box[key];
+	let bd = $user.box[key];
 	
 	if(bd.value){
 		// 기한이 끝날 때까지 box 자체에서 사라지지는 않는다. 기한 만료 여부 확인 시점: 1. 로그인 2. box 조회 3. 게임 결과 반영 직전 4. 해당 항목 사용 직전
@@ -71,8 +76,8 @@ Server.get("/help", function(req, res){
 	});
 });
 Server.get("/ranking", function(req, res){
-	var pg = Number(req.query.p);
-	var id = req.query.id;
+	let pg = Number(req.query.p);
+	let id = req.query.id;
 	
 	if(id){
 		MainDB.redis.getSurround(id, 15).then(function($body){
@@ -87,9 +92,9 @@ Server.get("/ranking", function(req, res){
 });
 Server.get("/injeong/:word", function(req, res){
 	if(!req.session.profile) return res.send({ error: 402 });
-	var word = req.params.word;
-	var theme = req.query.theme;
-	var now = Date.now();
+	let word = req.params.word;
+	let theme = req.query.theme;
+	let now = Date.now();
 	
 	if(now - req.session.injBefore < 2000) return res.send({ error: 429 });
 	req.session.injBefore = now;
@@ -123,7 +128,7 @@ Server.get("/shop", function(req, res){
 
 // POST
 Server.post("/exordial", function(req, res){
-	var text = req.body.data || "";
+	let text = req.body.data || "";
 	
 	if(req.session.profile){
 		text = text.slice(0, 100);
@@ -134,8 +139,8 @@ Server.post("/exordial", function(req, res){
 });
 Server.post("/buy/:id", function(req, res){
 	if(req.session.profile){
-		var uid = req.session.profile.id;
-		var gid = req.params.id;
+		let uid = req.session.profile.id;
+		let gid = req.params.id;
 		
 		MainDB.kkutu_shop.findOne([ '_id', gid ]).on(function($item){
 			if(!$item) return res.json({ error: 400 });
@@ -163,25 +168,25 @@ Server.post("/buy/:id", function(req, res){
 });
 Server.post("/equip/:id", function(req, res){
 	if(!req.session.profile) return res.json({ error: 400 });
-	var uid = req.session.profile.id;
-	var gid = req.params.id;
-	var isLeft = req.body.isLeft == "true";
-	var now = Date.now() * 0.001;
+	let uid = req.session.profile.id;
+	let gid = req.params.id;
+	let isLeft = req.body.isLeft == "true";
+	let now = Date.now() * 0.001;
 	
 	MainDB.users.findOne([ '_id', uid ]).limit([ 'box', true ], [ 'equip', true ]).on(function($user){
 		if(!$user) return res.json({ error: 400 });
 		if(!$user.box) $user.box = {};
 		if(!$user.equip) $user.equip = {};
-		var q = $user.box[gid], r;
+		let q = $user.box[gid], r;
 		
 		MainDB.kkutu_shop.findOne([ '_id', gid ]).limit([ 'group', true ]).on(function($item){
 			if(!$item) return res.json({ error: 430 });
 			if(!Const.AVAIL_EQUIP.includes($item.group)) return res.json({ error: 400 });
 			
-			var part = $item.group;
+			let part = $item.group;
 			if(part.substr(0, 3) == "BDG") part = "BDG";
 			if(part == "Mhand") part = isLeft ? "Mlhand" : "Mrhand";
-			var qid = $user.equip[part];
+			let qid = $user.equip[part];
 			
 			if(qid){
 				r = $user.box[qid];
@@ -206,9 +211,9 @@ Server.post("/equip/:id", function(req, res){
 });
 Server.post("/payback/:id", function(req, res){
 	if(!req.session.profile) return res.json({ error: 400 });
-	var uid = req.session.profile.id;
-	var gid = req.params.id;
-	var isDyn = gid.charAt() == '$';
+	let uid = req.session.profile.id;
+	let gid = req.params.id;
+	let isDyn = gid.charAt() == '$';
 	
 	MainDB.users.findOne([ '_id', uid ]).limit([ 'money', true ], [ 'box', true ]).on(function($user){
 		if(!$user) return res.json({ error: 400 });
@@ -228,9 +233,9 @@ Server.post("/payback/:id", function(req, res){
 	});
 });
 function blendWord(word){
-	var lang = parseLanguage(word);
-	var i, kl = [];
-	var kr = [];
+	let lang = parseLanguage(word);
+	let i, kl = [];
+	let kr = [];
 	
 	if(lang == "en") return String.fromCharCode(97 + Math.floor(Math.random() * 26));
 	if(lang == "ko"){
@@ -250,17 +255,17 @@ function parseLanguage(word){
 }
 Server.post("/cf", function(req, res){
 	if(!req.session.profile) return res.json({ error: 400 });
-	var uid = req.session.profile.id;
-	var tray = (req.body.tray || "").split('|');
-	var i, o;
+	let uid = req.session.profile.id;
+	let tray = (req.body.tray || "").split('|');
+	let i, o;
 	
 	if(tray.length < 1 || tray.length > 6) return res.json({ error: 400 });
 	MainDB.users.findOne([ '_id', uid ]).limit([ 'money', true ], [ 'box', true ]).on(function($user){
 		if(!$user) return res.json({ error: 400 });
 		if(!$user.box) $user.box = {};
-		var req = {}, word = "", level = 0;
-		var cfr, gain = [];
-		var blend;
+		let req = {}, word = "", level = 0;
+		let cfr, gain = [];
+		let blend;
 		
 		for(i in tray){
 			word += tray[i].slice(4);
@@ -296,9 +301,9 @@ Server.post("/cf", function(req, res){
 	// res.send(getCFRewards(req.params.word, Number(req.query.l || 0)));
 });
 Server.get("/dict/:word", function(req, res){
-    var word = req.params.word;
-    var lang = req.query.lang;
-    var DB = MainDB.kkutu[lang];
+    let word = req.params.word;
+    let lang = req.query.lang;
+    let DB = MainDB.kkutu[lang];
     
     if(!DB) return res.send({ error: 400 });
     if(!DB.findOne) return res.send({ error: 400 });
@@ -315,13 +320,13 @@ Server.get("/dict/:word", function(req, res){
 
 };
 function getCFRewards(word, level, blend){
-	var R = [];
-	var f = {
+	let R = [];
+	let f = {
 		len: word.length, // 최대 6
 		lev: level // 최대 18
 	};
-	var cost = 20 * f.lev;
-	var wur = f.len / 36; // 최대 2.867
+	let cost = 20 * f.lev;
+	let wur = f.len / 36; // 최대 2.867
 	
 	if(blend){
 		if(wur >= 0.5){

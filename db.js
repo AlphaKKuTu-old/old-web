@@ -15,6 +15,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+ 
+/**
+ * 볕뉘 수정사항:
+ * var 에서 let/const 로 변수 변경
+ * Redis 설정 변경
+ */
 
 const LANG = [ "ko", "en" ];
 
@@ -27,6 +33,7 @@ const Pub = lib.checkpub;
 const Lizard = lib.lizard;
 
 Pub.ready = function(isPub){
+	//볕뉘 수정
 	let redisConfig = {
 		host: GLOBAL.REDIS_ADDR,
 		port: GLOBAL.REDIS_PORT,
@@ -37,6 +44,7 @@ Pub.ready = function(isPub){
 		delete redisConfig.password;
 	}
 	const Redis	 = require("redis").createClient(redisConfig);
+	//볕뉘 수정 끝
 	const Pg = new PgPool({
 		user: GLOBAL.PG_USER,
 		password: GLOBAL.PG_PASS,

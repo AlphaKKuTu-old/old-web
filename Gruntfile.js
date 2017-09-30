@@ -16,7 +16,13 @@ const LICENSE = [
 	"along with this program. If not, see <http://www.gnu.org/licenses/>."
 ].join('\n');
 
-var File = require('fs');
+/**
+ * 볕뉘 수정사항:
+ * var 에서 let/const 로 변수 변경
+ * 파일 경로 변경
+ */
+
+const File = require('fs');
 
 const LIST = [
 	"global",
@@ -28,6 +34,7 @@ const LIST = [
 	"in_portal"
 ];
 const KKUTU_LIST = [
+	//볕뉘 수정
 	"lib/kkutu/head.js",
 	"lib/kkutu/ready.js",
 	"lib/kkutu/rule_classic.js",
@@ -39,13 +46,14 @@ const KKUTU_LIST = [
 	"lib/kkutu/rule_sock.js",
 	"lib/kkutu/body.js",
 	"lib/kkutu/tail.js"
+	//볕뉘 수정 끝
 ];
 
 module.exports = function(grunt){
-	var i, files = {}, cons = {};
-	var KKUTU = "public/js/in_game_kkutu.min.js";
+	let i, files = {}, cons = {};
+	let KKUTU = "public/js/in_game_kkutu.min.js";
 	
-	for(i in LIST){
+	for(let i in LIST){
 		files["public/js/"+LIST[i]+".min.js"] = "lib/"+LIST[i]+".js";
 	}
 	files[KKUTU] = KKUTU_LIST;
@@ -71,8 +79,8 @@ module.exports = function(grunt){
 	
 	grunt.registerTask('default', ['concat', 'uglify']);
 	grunt.registerTask('pack', 'Log', function(){
-		var done = this.async();
-		var url = __dirname + "/" + KKUTU;
+		let done = this.async();
+		let url = __dirname + "/" + KKUTU;
 		
 		File.readFile(url, function(err, res){
 			File.writeFile(url, "(function(){" + res.toString() + "})();", function(err, res){

@@ -16,6 +16,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * 볕뉘 수정사항:
+ * var 에서 let/const 로 변수 변경
+ */
+
 const MainDB	 = require("../db");
 const lib 	= require('kkutu-lib');
 const JLog	 = lib.jjlog;

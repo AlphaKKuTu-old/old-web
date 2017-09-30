@@ -33,7 +33,7 @@ if(isNaN(CPU)){
 	// process.exit(1);
 }
 if(Cluster.isMaster){
-	for(var i=0; i<CPU; i++){
+	for(let i=0; i<CPU; i++){
 		Cluster.fork({ SERVER_NO_FORK: true, WS_KEY: i+1 });
 	}
 	Cluster.on('exit', function(w){

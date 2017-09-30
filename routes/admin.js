@@ -15,13 +15,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+ 
+ /**
+ * 볕뉘 수정사항:
+ * var 에서 let/const 로 변수 변경
+ */
 
-var File	 = require("fs");
-var MainDB	 = require("../db");
-var GLOBAL	 = require("../global.json");
+const File	 = require("fs");
+const MainDB	 = require("../db");
+const GLOBAL	 = require("../global.json");
 const lib 	= require('kkutu-lib');
-var JLog	 = lib.jjlog;
-var Lizard	 = lib.lizard;
+const JLog	 = lib.jjlog;
+const Lizard	 = lib.lizard;
 
 exports.run = function(Server, page){
 

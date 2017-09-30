@@ -15,11 +15,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+ 
+ /**
+ * 볕뉘 수정사항:
+ * var 에서 let/const 로 변수 변경
+ */
 
-var GLOBAL	 = require("./global.json");
+const GLOBAL	 = require("./global.json");
 const lib 	= require('kkutu-lib');
-var JLog	 = lib.jjlog;
-var Language = {
+const JLog	 = lib.jjlog;
+const Language = {
 	'ko_KR': require("../Web/lang/ko_KR.json"),
 	'en_US': require("../Web/lang/en_US.json")
 };

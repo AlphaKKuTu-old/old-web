@@ -15,6 +15,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+ 
+ /**
+ * 볕뉘 수정사항:
+ * var 에서 let/const 로 변수 변경
+ * Redis 주석 해제
+ * 
+ */
 
 const WS		 = require("ws");
 const Express	 = require("express");
@@ -49,10 +56,12 @@ WebInit.MOBILE_AVAILABLE = [
 lib.checkpub;
 
 const session_configure = {
+	//볕뉘 수정
 	store: new Redission({
 		client: Redis.createClient(),
 		ttl: 3600 * 12
 	}),
+	//볕뉘 수정 끝
 	secret: 'kkutu',
 	resave: false,
 	saveUninitialized: true
