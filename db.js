@@ -38,7 +38,7 @@ Pub.ready = function(isPub){
 		host: GLOBAL.REDIS_ADDR,
 		port: GLOBAL.REDIS_PORT,
 		password: GLOBAL.REDIS_PASS,
-		db: GLOBAL.REDIS_DB
+		db: GLOBAL.REDIS_GAME_DB
 	};
 	if(redisConfig.password == '') {
 		delete redisConfig.password;

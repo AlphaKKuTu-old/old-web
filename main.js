@@ -55,10 +55,23 @@ WebInit.MOBILE_AVAILABLE = [
 
 lib.checkpub;
 
+//볕뉘 수정
+let redisConfig = {
+	host: GLOBAL.REDIS_ADDR,
+	port: GLOBAL.REDIS_PORT,
+	password: GLOBAL.REDIS_PASS,
+	db: GLOBAL.REDIS_SESSION_DB
+};
+if(redisConfig.password == '') {
+	delete redisConfig.password;
+}
+//볕뉘 수정 끝
+
 const session_configure = {
 	//볕뉘 수정
+	
 	store: new Redission({
-		client: Redis.createClient(),
+		client: Redis.createClient(redisConfig),
 		ttl: 3600 * 12
 	}),
 	//볕뉘 수정 끝
@@ -66,9 +79,7 @@ const session_configure = {
 	resave: false,
 	saveUninitialized: true
 };
-if(!GLOBAL.REDIS) {
-	delete session_configure.store;
-}
+//볕뉘 수정 구문삭제 (82~84)
 
 JLog.info("<< KKuTu Web >>");
 Server.set('views', __dirname + "/views");
@@ -134,7 +145,6 @@ function GameClient(id, url){
 	let my = this;
 	
 	my.id = id;
-	console.log(id);
 	my.socket = new WS(url, { perMessageDeflate: false });
 	
 	my.send = function(type, data){

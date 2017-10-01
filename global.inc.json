@@ -11,6 +11,8 @@
 	"REDIS_ADDR": "Your Redis server Address Here",
 	"REDIS_PASS": "Your Redis Password Here",
 	"REDIS_PORT": 6379,
-	"REDIS_DB": 0,
-	"WS_KEY": "kkutu_test"
+	"REDIS_GAME_DB": 0,
+	"REDIS_SESSION_DB": 1,
+	"WS_KEY": "kkutu_test",
+	"CLUSTER_SLAVES": 1
 }

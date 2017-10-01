@@ -24,7 +24,7 @@
 
 const Cluster = require("cluster");
 const global = require('./global.json');
-const CPU = Number(process.argv[2] | global.CLUSTER_SLAVES | 1); //require("os").cpus().length;
+const CPU = Number(process.argv[2] || global.CLUSTER_SLAVES || require("os").cpus().length); //require("os").cpus().length;
 
 if(isNaN(CPU)){
 	console.log(`Invalid CPU Number ${CPU}`);
