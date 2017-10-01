@@ -19,14 +19,17 @@
 /**
  * 볕뉘 수정사항:
  * var 에서 let/const 로 변수 변경
+ * kkutu-lib 모듈에 호환되도록 수정
  */
 
 const File	 = require("fs");
 const MainDB	 = require("../db");
 const GLOBAL	 = require("../global.json");
+//볕뉘 수정
 const lib 	= require('kkutu-lib');
 const JLog	 = lib.jjlog;
 const Lizard	 = lib.lizard;
+//볕뉘 수정 끝
 
 exports.run = function(Server, page){
 
@@ -228,8 +231,8 @@ Server.post("/gwalli/kkutuhot", function(req, res){
 	parseKKuTuHot().then(function($kh){
 		let i, j, obj = {};
 		
-		for(i in $kh){
-			for(j in $kh[i]){
+		for(let i in $kh){
+			for(let j in $kh[i]){
 				obj[$kh[i][j]._id] = $kh[i][j].hit;
 			}
 		}

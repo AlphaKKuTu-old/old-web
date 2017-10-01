@@ -19,12 +19,13 @@
 /**
  * 볕뉘 수정사항:
  * var 에서 let/const 로 변수 변경
- * kkutu-lib 모듈에 호환되도록 수정
  */
 
 const Cluster = require("cluster");
 const global = require('./global.json');
+//볕뉘 수정
 const CPU = Number(process.argv[2] || global.CLUSTER_SLAVES || require("os").cpus().length); //require("os").cpus().length;
+//볕뉘 수정
 
 if(isNaN(CPU)){
 	console.log(`Invalid CPU Number ${CPU}`);

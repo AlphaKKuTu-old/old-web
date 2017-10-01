@@ -19,13 +19,16 @@
 /**
  * 볕뉘 수정사항:
  * var 에서 let/const 로 변수 변경
+ * kkutu-lib 모듈에 호환되도록 수정
  */
 
 const Web		 = require("request");
 const MainDB	 = require("../db");
+//볕뉘 수정
 const lib 	= require('kkutu-lib');
 const JLog	 = lib.jjlog;
 const Const	 = require("../const");
+//볕뉘 수정 끝
 
 function obtain($user, key, value, term, addValue){
 	let now = (new Date()).getTime();
@@ -148,7 +151,7 @@ Server.post("/buy/:id", function(req, res){
 			MainDB.users.findOne([ '_id', uid ]).limit([ 'money', true ], [ 'box', true ]).on(function($user){
 				if(!$user) return res.json({ error: 400 });
 				if(!$user.box) $user.box = {};
-				var postM = $user.money - $item.cost;
+				let postM = $user.money - $item.cost;
 				
 				if(postM < 0) return res.send({ result: 400 });
 				

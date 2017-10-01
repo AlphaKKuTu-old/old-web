@@ -20,17 +20,20 @@
  * 볕뉘 수정사항:
  * var 에서 let/const 로 변수 변경
  * Redis 설정 변경
+ * kkutu-lib 모듈에 호환되도록 수정
  */
 
 const LANG = [ "ko", "en" ];
 
 const PgPool	 = require("pg").Pool;
 const GLOBAL	 = require("./global.json");
+//볕뉘 수정
 const lib 	= require('kkutu-lib');
 const JLog	 = lib.jjlog;
 const Collection = lib.collection;
 const Pub = lib.checkpub;
 const Lizard = lib.lizard;
+//볕뉘 수정 끝
 
 Pub.ready = function(isPub){
 	//볕뉘 수정
@@ -76,7 +79,7 @@ Pub.ready = function(isPub){
 			DB.kkutu_manner = {};
 			
 			DB.redis = noRedis ? FAKE_REDIS : new redisAgent.Table("KKuTu_Score");
-			for(i in LANG){
+			for(let i in LANG){
 				DB.kkutu[LANG[i]] = new mainAgent.Table("kkutu_"+LANG[i]);
 				DB.kkutu_cw[LANG[i]] = new mainAgent.Table("kkutu_cw_"+LANG[i]);
 				DB.kkutu_manner[LANG[i]] = new mainAgent.Table("kkutu_manner_"+LANG[i]);

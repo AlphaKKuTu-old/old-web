@@ -19,11 +19,14 @@
 /**
  * 볕뉘 수정사항:
  * var 에서 let/const 로 변수 변경
+ * kkutu-lib 모듈에 호환되도록 수정
  */
 
 const MainDB	 = require("../db");
+//볕뉘 수정
 const lib 	= require('kkutu-lib');
 const JLog	 = lib.jjlog;
+//볕뉘 수정 끝
 
 exports.run = function(Server, page){
 
@@ -37,8 +40,8 @@ Server.post("/consume/:id", function(req, res){
 		if(!$user) return res.json({ error: 400 });
 		if(!$user.box) return res.json({ error: 400 });
 		if(!$user.lastLogin) $user.lastLogin = new Date().getTime();
-		var q = $user.box[gid];
-		var output;
+		let q = $user.box[gid];
+		let output;
 		
 		if(!q) return res.json({ error: 430 });
 		MainDB.kkutu_shop.findOne([ '_id', isDyn ? gid.slice(0, 4) : gid ]).limit([ 'cost', true ]).on(function($item){
@@ -57,7 +60,7 @@ Server.post("/consume/:id", function(req, res){
 
 };
 function useItem($user, $item, gid){
-	var R = { gain: [] };
+	let R = { gain: [] };
 	
 	switch($item._id){
 		case 'boxB2':
@@ -86,7 +89,7 @@ function useItem($user, $item, gid){
 	return R;
 }
 function consume($user, key, value){
-    var bd = $user.box[key];
+    let bd = $user.box[key];
     
     if(bd.value){
         // 기한이 끝날 때까지 box 자체에서 사라지지는 않는다. 기한 만료 여부 확인 시점: 1. 로그인 2. box 조회 3. 게임 결과 반영 직전 4. 해당 항목 사용 직전
@@ -96,7 +99,7 @@ function consume($user, key, value){
     }
 }
 function obtain($user, key, value, term, addValue){
-    var now = Math.round(Date.now() * 0.001);
+    let now = Math.round(Date.now() * 0.001);
     
     if(term){
         if($user.box[key]){

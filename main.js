@@ -20,7 +20,7 @@
  * 볕뉘 수정사항:
  * var 에서 let/const 로 변수 변경
  * Redis 주석 해제
- * 
+ * kkutu-lib 모듈에 호환되도록 수정
  */
 
 const WS		 = require("ws");
@@ -32,9 +32,11 @@ const Parser	 = require("body-parser");
 const DDDoS	 = require("dddos");
 const Server	 = Express();
 const DB		 = require("./db");
+//볕뉘 수정
 const lib 	= require('kkutu-lib');
 const JAuth	 = lib.jauth;
 const JLog	 = lib.jjlog;
+//볕뉘 수정 끝
 const WebInit	 = require('./webinit.js');
 const GLOBAL	 = require("./global.json");
 const Const	 = require("./const");
@@ -124,12 +126,12 @@ DB.ready = function(){
 	DB.kkutu_shop_desc.find().on(function($docs){
 		let i, j;
 		
-		for(i in Language) flush(i);
+		for(let i in Language) flush(i);
 		function flush(lang){
 			let db;
 			
 			Language[lang].SHOP = db = {};
-			for(j in $docs){
+			for(let j in $docs){
 				db[$docs[j]._id] = [ $docs[j][`name_${lang}`], $docs[j][`desc_${lang}`] ];
 			}
 		}
