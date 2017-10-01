@@ -34,7 +34,7 @@ const Server	 = Express();
 const DB		 = require("./db");
 //볕뉘 수정
 const lib 	= require('kkutu-lib');
-const JAuth	 = lib.jauth;
+const JAuth	 = require('./jauth');
 const JLog	 = lib.jjlog;
 //볕뉘 수정 끝
 const WebInit	 = require('./webinit.js');
