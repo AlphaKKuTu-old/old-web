@@ -19,6 +19,7 @@
 /**
  * 볕뉘 수정사항:
  * var 에서 let/const 로 변수 변경
+ * kkutu-lib 모듈에 호환되도록 수정
  */
 
 const NAVER_ID = "네이버 앱 아이디";
@@ -29,9 +30,12 @@ const GOOGLE_SECRET = "Google App Secret";
 // const TWITTER_KEY = "";
 
 const Web		 = require("request");
-const Lizard	 = require("./lizard");
-const JLog	 = require("./jjlog");
-// const Ajae	 = require("./ajae").checkAjae;
+//볕뉘 수정
+const lib = require('kkutu-lib');
+const Lizard	 = lib.lizard;
+const JLog	 = lib.jjlog;
+// const Ajae	 = lib.ajae.checkAjae;
+//볕뉘 수정 끝
 
 exports.login = function(type, token, sid, token2){
 	const R = new Lizard.Tail();
