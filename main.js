@@ -22,6 +22,7 @@
  * Redis 주석 해제
  * kkutu-lib 모듈에 호환되도록 수정
  * Login 을 Passport 로 수행하기 위한 수정
+ * HTTPS 대응코드 삽입
  */
 
 const WS		 = require("ws");
@@ -43,6 +44,8 @@ const GLOBAL	 = require("./global.json");
 const Const	 = require("./const");
 //볕뉘 수정
 const passport = require('passport');
+const https	 = require('https');
+const fs		 = require('fs');
 //볕뉘 수정 끝
 
 const Language = {
@@ -104,6 +107,19 @@ Server.use((req, res, next) => {
 	}
 	next();
 });
+
+Server.use((req, res, next) => {
+	if(Const.IS_SECURED) {
+		if(req.protocol == 'http') {
+			let url = 'https://'+req.get('host')+req.path;
+			res.status(302).redirect(url);
+		} else {
+			next();
+		}
+	} else {
+		next();
+	}
+});
 //볕뉘 수정 끝
 /* use this if you want
 
@@ -153,17 +169,42 @@ DB.ready = function(){
 		}
 	});
 	Server.listen(80);
+	//볕뉘 수정 시작
+	if(Const.IS_SECURED) {
+		const options = {};
+		if(Const.SSL_OPTIONS.isPFX == true) {
+			options.pfx = fs.readFileSync(Const.SSL_OPTIONS.PFX);
+		} else {
+			options.key = fs.readFileSync(Const.SSL_OPTIONS.PRIVKEY);
+			options.cert = fs.readFileSync(Const.SSL_OPTIONS.CERT);
+			if(Const.SSL_OPTIONS.isCA == true) {
+				options.ca = fs.readFileSync(Const.SSL_OPTIONS.CA);
+			}
+		}
+		https.createServer(options, Server).listen(443);
+	}
+	//볕뉘 수정 끝
 };
 Const.MAIN_PORTS.forEach(function(v, i){
-	let KEY = GLOBAL.WS_KEY;
+	//볕뉘 수정 시작
+	let KEY = GLOBAL.WS_KEY+'-'+(process.env['WS_KEY'] != undefined ? process.env['WS_KEY'] : 1);
 	
 	gameServers[i] = new GameClient(i, `${v}/${KEY}`);
+	//볕뉘 수정 끝
 });
 function GameClient(id, url){
 	let my = this;
 	
 	my.id = id;
-	my.socket = new WS(url, { perMessageDeflate: false });
+	//볕뉘 수정 시작
+	let override;
+	if(url.match(/127\.0\.0\.[0-255]/) != null) {
+		override = false;
+	} else {
+		override = true;
+	}
+	my.socket = new WS(url, {perMessageDeflate: false, rejectUnauthorized: override});
+	//볕뉘 수정 끝
 	
 	my.send = function(type, data){
 		if(!data) data = {};
@@ -207,26 +248,16 @@ ROUTES.forEach(function(v){
 Server.get("/", function(req, res){
 	let server = req.query.server;
 	
-	if(req.query.code){ // 네이버 토큰
-		req.session.authType = "naver";
-		req.session.token = req.query.code;
-		res.redirect("/register");
-	}else if(req.query.token){ // 페이스북 토큰
-		req.session.authType = "facebook";
-		req.session.token = req.query.token;
-		res.redirect("/register");
-	}else{
-		DB.session.findOne([ '_id', req.session.id ]).on(function($ses){
-			// let sid = (($ses || {}).profile || {}).sid || "NULL";
-			if(global.isPublic){
-				onFinish($ses);
-				// DB.jjo_session.findOne([ '_id', sid ]).limit([ 'profile', true ]).on(onFinish);
-			}else{
-				if($ses) $ses.profile.sid = $ses._id;
-				onFinish($ses);
-			}
-		});
-	}
+	DB.session.findOne([ '_id', req.session.id ]).on(function($ses){
+		// let sid = (($ses || {}).profile || {}).sid || "NULL";
+		if(global.isPublic){
+			onFinish($ses);
+			// DB.jjo_session.findOne([ '_id', sid ]).limit([ 'profile', true ]).on(onFinish);
+		}else{
+			if($ses) $ses.profile.sid = $ses._id;
+			onFinish($ses);
+		}
+	});
 	function onFinish($doc){
 		let id = req.session.id;
 		

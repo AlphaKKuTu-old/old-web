@@ -19,6 +19,7 @@
 /**
  * 볕뉘 수정사항:
  * var 에서 let/const 로 변수 변경
+ * HTTPS 대응코드 삽입
  */
 
 const GLOBAL = require("./global.json");
@@ -36,6 +37,10 @@ exports.MAX_OBSERVER = 4;
 exports.TESTER = GLOBAL.ADMIN.concat([
 	"Input tester id here"
 ]);
+//볕뉘 수정
+exports.IS_SECURED = GLOBAL.IS_SECURED;
+exports.SSL_OPTIONS = GLOBAL.SSL_OPTIONS;
+//볕뉘 수정 끝
 exports.OPTIONS = {
 	'man': { name: "Manner" },
 	'ext': { name: "Injeong" },

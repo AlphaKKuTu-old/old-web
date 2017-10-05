@@ -14,5 +14,14 @@
 	"REDIS_GAME_DB": 0,
 	"REDIS_SESSION_DB": 1,
 	"WS_KEY": "kkutu_test",
-	"CLUSTER_SLAVES": 1
+	"CLUSTER_SLAVES": 1,
+	"IS_SECURED": false,
+	"SSL_OPTIONS": {
+		"PRIVKEY": "Your SSL Private Key Here",
+		"CERT": "Your SSL Certificate Here",
+		"CA": "Your SSL CA-Bundle Here",
+		"PFX": "Your PFX Bundle Here",
+		"isPFX": false,
+		"isCA": false
+	}
 }
