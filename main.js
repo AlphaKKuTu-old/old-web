@@ -97,10 +97,10 @@ Server.set('views', __dirname + "/views");
 Server.set('view engine', "pug");
 Server.use(Express.static(__dirname + "/public"));
 Server.use(Parser.urlencoded({ extended: true }));
+//볕뉘 수정
 Server.use(Exession(session_configure));
 Server.use(passport.initialize());
 Server.use(passport.session());
-//볕뉘 수정
 Server.use((req, res, next) => {
 	if(req.session.passport) {
 		delete req.session.passport;
