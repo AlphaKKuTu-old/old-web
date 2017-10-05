@@ -21,6 +21,7 @@
  * var 에서 let/const 로 변수 변경
  * Redis 주석 해제
  * kkutu-lib 모듈에 호환되도록 수정
+ * Login 을 Passport 로 수행하기 위한 수정
  */
 
 const WS		 = require("ws");
@@ -34,20 +35,25 @@ const Server	 = Express();
 const DB		 = require("./db");
 //볕뉘 수정
 const lib 	= require('kkutu-lib');
-const JAuth	 = require('./jauth');
+//볕뉘 수정 구문삭제 (38)
 const JLog	 = lib.jjlog;
 //볕뉘 수정 끝
 const WebInit	 = require('./webinit.js');
 const GLOBAL	 = require("./global.json");
 const Const	 = require("./const");
+//볕뉘 수정
+const passport = require('passport');
+//볕뉘 수정 끝
 
 const Language = {
 	'ko_KR': require("./lang/ko_KR.json"),
 	'en_US': require("./lang/en_US.json")
 };
+//볕뉘 수정
 const ROUTES = [
-	"major", "consume", "admin"
+	"major", "consume", "admin", "login"
 ];
+//볕뉘 수정 끝
 const page = WebInit.page;
 const gameServers = [];
 
@@ -89,6 +95,16 @@ Server.set('view engine', "pug");
 Server.use(Express.static(__dirname + "/public"));
 Server.use(Parser.urlencoded({ extended: true }));
 Server.use(Exession(session_configure));
+Server.use(passport.initialize());
+Server.use(passport.session());
+//볕뉘 수정
+Server.use((req, res, next) => {
+	if(req.session.passport) {
+		delete req.session.passport;
+	}
+	next();
+});
+//볕뉘 수정 끝
 /* use this if you want
 
 DDDoS = new DDDoS({
@@ -249,87 +265,13 @@ Server.get("/servers", function(req, res){
 	let list = [];
 	
 	gameServers.forEach(function(v, i){
-		console.log(v.seek);
 		list[i] = v.seek;
 	});
 	res.send({ list: list, max: Const.KKUTU_MAX });
 });
 
-Server.get("/login", function(req, res){
-	if(global.isPublic){
-		page(req, res, "login", { '_id': req.session.id, 'text': req.query.desc });
-	}else{
-		let now = Date.now();
-		let id = req.query.id || "ADMIN";
-		let lp = {
-			id: id,
-			title: "LOCAL #" + id,
-			birth: [ 4, 16, 0 ],
-			_age: { min: 20, max: undefined }
-		};
-		DB.session.upsert([ '_id', req.session.id ]).set([ 'profile', JSON.stringify(lp) ], [ 'createdAt', now ]).on(function($res){
-			DB.users.update([ '_id', id ]).set([ 'lastLogin', now ]).on();
-			req.session.admin = true;
-			req.session.profile = lp;
-			res.redirect("/");
-		});
-	}
-});
-Server.get("/logout", function(req, res){
-	if(!req.session.profile){
-		return res.redirect("/");
-	}
-	JAuth.logout(req.session.profile).then(function(){
-		delete req.session.profile;
-		DB.session.remove([ '_id', req.session.id ]).on(function($res){
-			res.redirect("/");
-		});
-	});
-});
-Server.get("/register", function(req, res){
-	if(!req.session.token) return res.sendStatus(400);
-	
-	JAuth.login(req.session.authType, req.session.token, req.session.id, req.session.token2).then(function($profile){
-		let now = Date.now();
-		
-		if($profile.error) return res.sendStatus($profile.error);
-		if(!$profile.id) return res.sendStatus(401);
-		
-		$profile.sid = req.session.id;
-		req.session.admin = GLOBAL.ADMIN.includes($profile.id);
-		DB.session.upsert([ '_id', req.session.id ]).set({
-			'profile': $profile,
-			'createdAt': now
-		}).on();
-		DB.users.findOne([ '_id', $profile.id ]).on(function($body){
-			req.session.profile = $profile;
-			res.redirect("/");
-			DB.users.update([ '_id', $profile.id ]).set([ 'lastLogin', now ]).on();
-		});
-	});
-});
-Server.post("/login/google", function(req, res){
-	req.session.authType = "google";
-	req.session.token = req.body.it;
-	req.session.token2 = req.body.at;
-	res.sendStatus(200);
-});
-Server.post("/session", function(req, res){
-	let o;
-	
-	if(req.session.profile) o = {
-		authType: req.session.authType,
-		createdAt: req.session.createdAt,
-		profile: {
-			id: req.session.profile.id,
-			image: req.session.profile.image,
-			name: req.session.profile.title || req.session.profile.name,
-			sex: req.session.profile.sex
-		}
-	};
-	else o = { error: 404 };
-	res.json(o);
-});
+//볕뉘 수정 구문 삭제(261~335)
+
 Server.post("/session/set", function(req, res){
 	res.sendStatus(200);
 });
