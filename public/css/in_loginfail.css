@@ -18,7 +18,7 @@
 
 /**
  * 볕뉘 수정사항:
- * 로그인을 Passport 로 수행하기 위한 대응코드 삽입
+ * Login 실패 페이지 제작을 위한 파일 생성
  */
 
 body{
@@ -32,39 +32,20 @@ button{
 	cursor: pointer;
 	box-shadow: 0px 2px 2px #141414;
 }
-#with-google span{ display: block; }
-.login-with{
-	padding-top: 30px;
-	margin: 30px 0px;
+.login {
+	color: #FFFFFF;
+	background-color: #0099FF;
+}
+.middle {
+	position: absolute;
+	top: 0; 
+	bottom: 0; 
+	left: 0; 
+	right: 0;
+	margin: auto; 
+	height: 240px; 
+	width: 70%;
+}
+.middle p {
 	text-align: center;
 }
-.with-naver{
-	color: #FFFFFF;
-	background-color: #1EC800;
-}
-.with-facebook{
-	color: #FFFFFF;
-	background-color: #235EE3;
-}
-.with-twitter{
-	color: #FFFFFF;
-	background-color: #55ACEE;
-}
-/*볕뉘 수정*/
-.with-google{
-	color: #000000;
-	background-color: #FFFFFF;
-}
-.with-kakao{
-	color: #3C1E1E;
-	background-color: #FFDE00;
-}
-
-/*볕뉘 수정 끝*/
-.login-legal{
-	padding-top: 50px;
-	color: #BBBBBB;
-	font-size: 11px;
-	text-align: center;
-}
-.login-legal a{ color: #DDDDDD; }

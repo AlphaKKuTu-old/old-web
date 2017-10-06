@@ -20,6 +20,7 @@ const LICENSE = [
  * 볕뉘 수정사항:
  * var 에서 let/const 로 변수 변경
  * 파일 경로 변경
+ * Login 실패 페이지 제작을 위한 대응코드 삽입
  */
 
 const File = require('fs');
@@ -31,7 +32,10 @@ const LIST = [
 	"in_game_kkutu",
 	"in_game_kkutu_help",
 	"in_admin",
-	"in_portal"
+	"in_portal",
+	//볕뉘 수정
+	"in_loginfail"
+	//볕뉘 수정 끝
 ];
 const KKUTU_LIST = [
 	//볕뉘 수정
@@ -45,7 +49,7 @@ const KKUTU_LIST = [
 	"lib/kkutu/rule_daneo.js",
 	"lib/kkutu/rule_sock.js",
 	"lib/kkutu/body.js",
-	"lib/kkutu/tail.js"
+	"lib/kkutu/tail.js",
 	//볕뉘 수정 끝
 ];
 
