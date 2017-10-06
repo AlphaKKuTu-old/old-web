@@ -20,6 +20,7 @@
  * 볕뉘 수정사항:
  * var 에서 let/const 로 변수 변경
  * kkutu-lib 모듈에 호환되도록 수정
+ * 파일 위치관련 수정
  */
 
 const File	 = require("fs");
@@ -122,8 +123,9 @@ Server.get("/gwalli/kkututheme", function(req, res){
 });
 Server.get("/gwalli/kkutuhot", function(req, res){
 	if(!checkAdmin(req, res)) return;
-	
-	File.readFile(GLOBAL.KKUTUHOT_PATH, function(err, file){
+	//볕뉘 수정
+	File.readFile(require('path').join(__dirname,'../', GLOBAL.KKUTUHOT_PATH), function(err, file){
+	//볕뉘 수정 끝
 		let data = JSON.parse(file.toString());
 		
 		parseKKuTuHot().then(function($kh){
@@ -236,7 +238,9 @@ Server.post("/gwalli/kkutuhot", function(req, res){
 				obj[$kh[i][j]._id] = $kh[i][j].hit;
 			}
 		}
-		File.writeFile(GLOBAL.KKUTUHOT_PATH, JSON.stringify(obj), function(err){
+		//볕뉘 수정
+		File.writeFile(require('path').join(__dirname,'../', GLOBAL.KKUTUHOT_PATH), JSON.stringify(obj), function(err){
+		//볕뉘 수정 끝
 			res.send(err);
 		});
 	});
