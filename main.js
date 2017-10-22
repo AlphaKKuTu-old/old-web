@@ -46,6 +46,7 @@ const Const	 = require("./const");
 const passport = require('passport');
 const https	 = require('https');
 const fs		 = require('fs');
+const secure = lib.secure;
 //볕뉘 수정 끝
 
 const Language = {
@@ -171,16 +172,7 @@ DB.ready = function(){
 	Server.listen(80);
 	//볕뉘 수정 시작
 	if(Const.IS_SECURED) {
-		const options = {};
-		if(Const.SSL_OPTIONS.isPFX == true) {
-			options.pfx = fs.readFileSync(Const.SSL_OPTIONS.PFX);
-		} else {
-			options.key = fs.readFileSync(Const.SSL_OPTIONS.PRIVKEY);
-			options.cert = fs.readFileSync(Const.SSL_OPTIONS.CERT);
-			if(Const.SSL_OPTIONS.isCA == true) {
-				options.ca = fs.readFileSync(Const.SSL_OPTIONS.CA);
-			}
-		}
+		const options = secure(SSL_OPTIONS);
 		https.createServer(options, Server).listen(443);
 	}
 	//볕뉘 수정 끝
