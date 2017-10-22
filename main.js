@@ -172,7 +172,7 @@ DB.ready = function(){
 	Server.listen(80);
 	//볕뉘 수정 시작
 	if(Const.IS_SECURED) {
-		const options = secure(SSL_OPTIONS);
+		const options = secure(Const.SSL_OPTIONS);
 		https.createServer(options, Server).listen(443);
 	}
 	//볕뉘 수정 끝
