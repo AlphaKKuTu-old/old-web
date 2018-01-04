@@ -34,30 +34,23 @@ const Parser	 = require("body-parser");
 const DDDoS	 = require("dddos");
 const Server	 = Express();
 const DB		 = require("./db");
-//볕뉘 수정
 const lib 	= require('kkutu-lib');
-//볕뉘 수정 구문삭제 (38)
 const JLog	 = lib.jjlog;
-//볕뉘 수정 끝
 const WebInit	 = require('./webinit.js');
 const GLOBAL	 = require("./global.json");
 const Const	 = require("./const");
-//볕뉘 수정
 const passport = require('passport');
 const https	 = require('https');
 const fs		 = require('fs');
 const secure = lib.secure;
-//볕뉘 수정 끝
 
 const Language = {
 	'ko_KR': require("./lang/ko_KR.json"),
 	'en_US': require("./lang/en_US.json")
 };
-//볕뉘 수정
 const ROUTES = [
 	"major", "consume", "admin", "login"
 ];
-//볕뉘 수정 끝
 const page = WebInit.page;
 const gameServers = [];
 
@@ -67,7 +60,6 @@ WebInit.MOBILE_AVAILABLE = [
 
 lib.checkpub;
 
-//볕뉘 수정
 let redisConfig = {
 	host: GLOBAL.REDIS_ADDR,
 	port: GLOBAL.REDIS_PORT,
@@ -77,28 +69,22 @@ let redisConfig = {
 if(redisConfig.password == '') {
 	delete redisConfig.password;
 }
-//볕뉘 수정 끝
 
 const session_configure = {
-	//볕뉘 수정
-	
 	store: new Redission({
 		client: Redis.createClient(redisConfig),
 		ttl: 3600 * 12
 	}),
-	//볕뉘 수정 끝
 	secret: 'kkutu',
 	resave: false,
 	saveUninitialized: true
 };
-//볕뉘 수정 구문삭제 (82~84)
 
 JLog.info("<< KKuTu Web >>");
 Server.set('views', __dirname + "/views");
 Server.set('view engine', "pug");
 Server.use(Express.static(__dirname + "/public"));
 Server.use(Parser.urlencoded({ extended: true }));
-//볕뉘 수정
 Server.use(Exession(session_configure));
 Server.use(passport.initialize());
 Server.use(passport.session());
@@ -121,7 +107,6 @@ Server.use((req, res, next) => {
 		next();
 	}
 });
-//볕뉘 수정 끝
 /* use this if you want
 
 DDDoS = new DDDoS({
@@ -170,25 +155,20 @@ DB.ready = function(){
 		}
 	});
 	Server.listen(80);
-	//볕뉘 수정 시작
 	if(Const.IS_SECURED) {
 		const options = secure(Const.SSL_OPTIONS);
 		https.createServer(options, Server).listen(443);
 	}
-	//볕뉘 수정 끝
 };
 Const.MAIN_PORTS.forEach(function(v, i){
-	//볕뉘 수정 시작
 	let KEY = GLOBAL.WS_KEY+'-'+(process.env['WS_KEY'] != undefined ? process.env['WS_KEY'] : 1);
 	
 	gameServers[i] = new GameClient(i, `${v}/${KEY}`);
-	//볕뉘 수정 끝
 });
 function GameClient(id, url){
 	let my = this;
 	
 	my.id = id;
-	//볕뉘 수정 시작
 	let override;
 	if(url.match(/127\.0\.0\.[0-255]/) != null) {
 		override = false;
@@ -196,7 +176,6 @@ function GameClient(id, url){
 		override = true;
 	}
 	my.socket = new WS(url, {perMessageDeflate: false, rejectUnauthorized: override});
-	//볕뉘 수정 끝
 	
 	my.send = function(type, data){
 		if(!data) data = {};
@@ -292,8 +271,6 @@ Server.get("/servers", function(req, res){
 	});
 	res.send({ list: list, max: Const.KKUTU_MAX });
 });
-
-//볕뉘 수정 구문 삭제(261~335)
 
 Server.post("/session/set", function(req, res){
 	res.sendStatus(200);

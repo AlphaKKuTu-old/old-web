@@ -29,4 +29,6 @@ node_modules
 
 global.json
 public/js/
+!Server/lib/Web/public/js/jquery.js
 auth.json
+.vscode

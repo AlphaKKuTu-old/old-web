@@ -33,12 +33,9 @@ const LIST = [
 	"in_game_kkutu_help",
 	"in_admin",
 	"in_portal",
-	//볕뉘 수정
 	"in_loginfail"
-	//볕뉘 수정 끝
 ];
 const KKUTU_LIST = [
-	//볕뉘 수정
 	"lib/kkutu/head.js",
 	"lib/kkutu/ready.js",
 	"lib/kkutu/rule_classic.js",
@@ -50,7 +47,6 @@ const KKUTU_LIST = [
 	"lib/kkutu/rule_sock.js",
 	"lib/kkutu/body.js",
 	"lib/kkutu/tail.js",
-	//볕뉘 수정 끝
 ];
 
 module.exports = function(grunt){
