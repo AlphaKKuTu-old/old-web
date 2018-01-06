@@ -23,13 +23,11 @@
  */
 
 const GLOBAL	 = require("./global.json");
-//볕뉘 수정
 const lib 	= require('kkutu-lib');
 const JLog	 = lib.jjlog;
-//볕뉘 수정 끝
 const Language = {
-	'ko_KR': require("../Web/lang/ko_KR.json"),
-	'en_US': require("../Web/lang/en_US.json")
+	'ko_KR': require("./lang/ko_KR.json"),
+	'en_US': require("./lang/en_US.json")
 };
 
 function updateLanguage(){

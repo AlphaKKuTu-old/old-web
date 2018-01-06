@@ -1,11 +1,12 @@
-const config = require('../../sub/auth.json');
+const config = require('../auth.json');
 
 module.exports.config = {
     strategy: require('passport-naver').Strategy, // example: naver, require strategy
     color: '#000000', // example: #1EC800
     fontColor: '#FFFFFF', //example: #FFFFFF
     vendor: '', // example: naver
-    displayName: '네이버'
+    displayName: '네이버',
+    'useoAuth-buttons': true //if is true, use oauth-buttons lib
 }
 
 module.exports.strategyConfig = { // example: naver

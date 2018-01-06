@@ -1,11 +1,12 @@
-const config = require('../../sub/auth.json');
+const config = require('../auth.json');
 
 module.exports.config = {
     strategy: require('passport-kakao').Strategy,
     color: '#FFDE00',
     fontColor: '#3C1E1E',
     vendor: 'kakao',
-    displayName: 'withKakao'
+    displayName: 'withKakao',
+    'useoAuth-buttons': true
 }
 
 module.exports.strategyConfig = {

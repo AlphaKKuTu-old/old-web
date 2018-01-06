@@ -24,12 +24,12 @@
 
  
 const MainDB	 = require("../db");
-const JLog	 = require("../../sub/jjlog");
-// const Ajae	 = require("../../sub/ajaejs").checkAjae;
+const lib 	= require('kkutu-lib');
+const JLog	 = lib.jjlog;
+// const Ajae	 = lib.ajae.checkAjae;
 const passport = require('passport');
 const glob = require('glob-promise');
-const GLOBAL	 = require("../../sub/global.json");
-const config = require('../../sub/auth.json');
+const GLOBAL	 = require("../global.json");
 
 function process(req, accessToken, MainDB, $p, done) {
     $p.token = accessToken;
@@ -73,12 +73,21 @@ exports.run = (Server, page) => {
                 failureRedirect: '/loginfail'
             }))
             passport.use(new auth.config.strategy(auth.strategyConfig, auth.strategy(process, MainDB /*, Ajae */)));
-            strategyList[auth.config.vendor] = {
-                vendor: auth.config.vendor,
-                displayName: auth.config.displayName,
-                color: auth.config.color,
-                fontColor: auth.config.fontColor
-            };
+            if(auth.config['useoAuth-buttons']) {
+                strategyList[auth.config.vendor] = {
+                    'useoAuth-buttons': true,
+                    vendor: auth.config.vendor,
+                    displayName: auth.config.displayName
+                }
+            } else {
+                strategyList[auth.config.vendor] = {
+                    vendor: auth.config.vendor,
+                    displayName: auth.config.displayName,
+                    color: auth.config.color,
+                    fontColor: auth.config.fontColor,
+                    'useoAuth-buttons': false
+                };
+            }
         }
     })
     .catch((e) => {

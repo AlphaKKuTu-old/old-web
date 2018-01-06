@@ -161,6 +161,9 @@ DB.ready = function(){
 	}
 };
 Const.MAIN_PORTS.forEach(function(v, i){
+	if(Array.isArray(v)) {
+		v = v[0]
+	}
 	let KEY = GLOBAL.WS_KEY+'-'+(process.env['WS_KEY'] != undefined ? process.env['WS_KEY'] : 1);
 	
 	gameServers[i] = new GameClient(i, `${v}/${KEY}`);

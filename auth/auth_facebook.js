@@ -1,11 +1,12 @@
-const config = require('../../sub/auth.json');
+const config = require('../auth.json');
 
 module.exports.config = {
     strategy: require('passport-facebook').Strategy,
     color: '#235EE3',
     fontColor: '#FFFFFF',
     vendor: 'facebook',
-    displayName: 'withFacebook'
+    displayName: 'withFacebook',
+    'useoAuth-buttons': true
 }
 
 module.exports.strategyConfig = {

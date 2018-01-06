@@ -29,6 +29,9 @@ node_modules
 
 global.json
 public/js/
-!Server/lib/Web/public/js/jquery.js
+!public/js/jquery.js
+!public/js/sweetalert.min.js
+!public/js/oauth-buttons.min.js
+!public/js/oauth-buttons.min.js.map
 auth.json
 .vscode
