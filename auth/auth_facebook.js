@@ -22,7 +22,7 @@ module.exports.strategy = (process, MainDB, Ajae) => {
         const $p = {};
 
         $p.authType = "facebook";
-        $p.id = profile.id;
+        $p.id = 'facebook-' + profile.id;
         $p.name = profile.displayName;
         $p.title = profile.displayName;
         $p.image = "https://graph.facebook.com/"+profile.id+"/picture";
