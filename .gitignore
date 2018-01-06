@@ -28,10 +28,7 @@ build/Release
 node_modules
 
 global.json
-public/js/
-!public/js/jquery.js
-!public/js/sweetalert.min.js
-!public/js/oauth-buttons.min.js
-!public/js/oauth-buttons.min.js.map
+public/js/global.min.js
+public/js/in_*.min.js
 auth.json
 .vscode
