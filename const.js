@@ -48,7 +48,7 @@ exports.OPTIONS = {
 	'str': { name: "Strict" },
 	'k32': { name: "Sami" },
 	'no2': { name: "No2" },
-	'alk': { name: "Charactor" }
+	'alk': { name: "Character" }
 };
 exports.MOREMI_PART = [ 'back', 'eye', 'mouth', 'shoes', 'clothes', 'head', 'lhand', 'rhand', 'front' ];
 exports.CATEGORIES = [ "all", "spec", "skin", "badge", "head", "eye", "mouth", "clothes", "hs", "back" ];
