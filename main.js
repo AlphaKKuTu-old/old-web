@@ -241,10 +241,10 @@ Server.get("/", function(req, res){
 		}else{
 			delete req.session.profile;
 		}
-		page(req, res, Const.MAIN_PORTS[server] ? "kkutu" : "portal", {
+		page(req, res, (Array.isArray(Const.MAIN_PORTS[server]) ? Const.MAIN_PORTS[server][0] : Const.MAIN_PORTS[server]) ? "kkutu" : "portal", {
 			'_page': "kkutu",
 			'_id': id,
-			'PORT': Const.MAIN_PORTS[server],
+			'PORT': (Array.isArray(Const.MAIN_PORTS[server]) ? Const.MAIN_PORTS[server][0] : Const.MAIN_PORTS[server]),
 			'HOST': req.hostname,
 			'TEST': req.query.test,
 			'MOREMI_PART': Const.MOREMI_PART,
