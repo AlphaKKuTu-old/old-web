@@ -216,6 +216,10 @@ exports.KO_INJEONG = [
 	"YRY", "KPO", "JLN", "JAN", "ZEL", "POK", "HAI",
 	"HSS", "KMV", "HDC", "HOS"
 ];
+exports.KO_CHARACTER = [
+	'ALK'
+];
+
 exports.EN_INJEONG = [
 	"LOL"
 ];
@@ -243,7 +247,7 @@ exports.KOR_STRICT = /(^|,)(1|INJEONG)($|,)/;
 exports.KOR_GROUP = new RegExp("(,|^)(" + [
 	"0", "1", "3", "7", "8", "11", "9",
 	"16", "15", "17", "2", "18", "20", "26", "19",
-	"INJEONG"
+	"INJEONG", "CHARACTOR"
 ].join('|') + ")(,|$)");
 exports.ENG_ID = /^[a-z]+$/i;
 exports.KOR_FLAG = {
