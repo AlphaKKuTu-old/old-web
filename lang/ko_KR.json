@@ -107,7 +107,7 @@
 		"GROUP_Mfront": "모레미 전경"
 	},
 	"error": {
-		"title": "쪼롤 - League of Legends 전적 검색 사이트",
+		"title": "모리끄투",
 		"400": "[#400] 잘못된 요청",
 		"400_e": "유효하지 않은 입력이 감지되어 이 오류가 발생했습니다. 필요한 입력값을 제대로 입력했는지 확인해 주세요.",
 		"429": "[#429] 과다한 요청",
@@ -125,7 +125,7 @@
 		"withKakao": "카카오 아이디로 로그인",
 		"login_kkutu": "글자로 놀자! 끄투 온라인을 이용하시려면 로그인을 해 주세요.",
 		
-		"loginLegal": "로그인이 이루어지면 모리끄투가 공지하는 <a href='/legal/agreement' target='_blank'>서비스 이용 약관</a> 및 <a href='/legal/privacy' target='_blank'>개인정보 취급 방침</a>에 동의하게 됩니다."
+		"loginLegal": "로그인이 이루어지면 모리끄투가 공지하는 <a href='/agreement.html' target='_blank'>서비스 이용 약관</a> 및 <a href='/privacy.html' target='_blank'>개인정보 취급 방침</a>에 동의하게 됩니다."
 	},
 	"loginfail": {
 		"title": "로그인 실패",
