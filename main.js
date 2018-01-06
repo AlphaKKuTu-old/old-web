@@ -154,10 +154,10 @@ DB.ready = function(){
 			}
 		}
 	});
-	Server.listen(80);
+	Server.listen(GLOBAL.WEB_PORT);
 	if(Const.IS_SECURED) {
 		const options = secure(Const.SSL_OPTIONS);
-		https.createServer(options, Server).listen(443);
+		https.createServer(options, Server).listen(GLOBAL.SSL_PORT);
 	}
 };
 Const.MAIN_PORTS.forEach(function(v, i){
