@@ -1,5 +1,24 @@
 {
-  "dependencies": {
+  "name": "morikkutu-web",
+  "description": "web",
+  "version": "1.0.0",
+  "main": "cluster.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/small-suunshines/morikkutu-web.git"
+  },
+  "author": "small-sunshines",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/small-suunshines/morikkutu-web/issues"
+  },
+  "homepage": "https://github.com/small-suunshines/morikkutu-web#readme","dependencies": {
     "body-parser": "^1.15.2",
     "colors": "^1.1.2",
     "connect-redis": "^3.3.2",
@@ -8,11 +27,7 @@
     "express-session": "^1.15.6",
     "glob": "^7.1.2",
     "glob-promise": "^3.3.0",
-    "grunt": "^1.0.1",
-    "grunt-cli": "^1.2.0",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-uglify": "^2.1.0",
-    "kkutu-lib": "github:small-sunshines/kkutu-lib",
+    "kkutu-lib": "github:small-sunshines/morikkutu-lib",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth2": "^0.1.6",
@@ -26,11 +41,9 @@
     "ws": "^1.1.1"
   },
   "devDependencies": {
-    "eslint": "^4.14.0",
-    "eslint-config-standard": "^11.0.0-beta.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^2.1.0"
   }
 }
