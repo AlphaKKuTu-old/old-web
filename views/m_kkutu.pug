@@ -248,13 +248,7 @@ block Middle
 			input#dict-input(style='width: 183px;', placeholder=L('wpInput'), maxlength=200)
 		div.dialog-bar#dict-output(style='height: 195px; overflow-y: scroll; color: #BBBBBB; background-color: #111111;')
 		div.dialog-bar.tail-button
-			select#dict-theme(style='width: 86px;')
-				option(value="")= L('pickInjeong')
-				- locals.KO_ADDABLETHEME.forEach(function(item){
-					option(value=item)= L('theme_' + item)
-				- });
 			button#dict-search= L('SEARCH')
-			button#dict-injeong= L('injeongReq')
 	+Dialog('InviteDiag', 300, 420, L('invite'))
 		div.invite-board(style='height: 355px; overflow-y: scroll;')
 		div.dialog-bar.tail-button
