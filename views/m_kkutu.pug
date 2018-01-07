@@ -192,7 +192,7 @@ block Middle
 			button#injpick-no= L('injpickNo')
 		div.dialog-bar#injpick-list(style='height: 280px; overflow-y: scroll;')
 			div.dialog-opt#ko-pick-list(style='width: 100%;')
-				- locals.KO_THEME.concat(locals.KO_INJEONG).forEach(function(item){
+				- locals.KO_THEME.concat(locals.KO_ADDABLETHEME).forEach(function(item){
 					- var name = "ko-pick-" + item;
 					- if(locals.IJP_EXCEPT.indexOf(item) != -1) return;
 					div(style='float: left; width: 100%;')
