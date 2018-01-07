@@ -24,11 +24,9 @@
 
 const Web		 = require("request");
 const MainDB	 = require("../db");
-//볕뉘 수정
 const lib 	= require('kkutu-lib');
 const JLog	 = lib.jjlog;
 const Const	 = require("../const");
-//볕뉘 수정 끝
 
 function obtain($user, key, value, term, addValue){
 	let now = (new Date()).getTime();

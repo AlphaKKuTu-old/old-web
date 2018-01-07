@@ -23,10 +23,8 @@
  */
 
 const MainDB	 = require("../db");
-//볕뉘 수정
 const lib 	= require('kkutu-lib');
 const JLog	 = lib.jjlog;
-//볕뉘 수정 끝
 
 exports.run = function(Server, page){
 

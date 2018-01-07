@@ -27,16 +27,13 @@ const LANG = [ "ko", "en" ];
 
 const PgPool	 = require("pg").Pool;
 const GLOBAL	 = require("./global.json");
-//볕뉘 수정
 const lib 	= require('kkutu-lib');
 const JLog	 = lib.jjlog;
 const Collection = lib.collection;
 const Pub = lib.checkpub;
 const Lizard = lib.lizard;
-//볕뉘 수정 끝
 
 Pub.ready = function(isPub){
-	//볕뉘 수정
 	let redisConfig = {
 		host: GLOBAL.REDIS_ADDR,
 		port: GLOBAL.REDIS_PORT,
@@ -47,7 +44,6 @@ Pub.ready = function(isPub){
 		delete redisConfig.password;
 	}
 	const Redis	 = require("redis").createClient(redisConfig);
-	//볕뉘 수정 끝
 	const Pg = new PgPool({
 		user: GLOBAL.PG_USER,
 		password: GLOBAL.PG_PASS,

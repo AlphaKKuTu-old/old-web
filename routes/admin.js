@@ -26,11 +26,9 @@
 const File	 = require("fs");
 const MainDB	 = require("../db");
 const GLOBAL	 = require("../global.json");
-//볕뉘 수정
 const lib 	= require('kkutu-lib');
 const JLog	 = lib.jjlog;
 const Lizard	 = lib.lizard;
-//볕뉘 수정 끝
 
 exports.run = function(Server, page){
 
