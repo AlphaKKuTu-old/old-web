@@ -250,7 +250,7 @@ block Middle
 		div.dialog-bar.tail-button
 			select#dict-theme(style='width: 86px;')
 				option(value="")= L('pickInjeong')
-				- locals.KO_INJEONG.forEach(function(item){
+				- locals.KO_ADDABLETHEME.forEach(function(item){
 					option(value=item)= L('theme_' + item)
 				- });
 			button#dict-search= L('SEARCH')

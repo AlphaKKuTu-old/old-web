@@ -256,6 +256,7 @@ Server.get("/", function(req, res){
 			'OPTIONS': Const.OPTIONS,
 			'KO_INJEONG': Const.KO_INJEONG,
 			'EN_INJEONG': Const.EN_INJEONG,
+			'KO_ADDABLETHEME': Const.KO_ADDABLETHEME,
 			'KO_THEME': Const.KO_THEME,
 			'EN_THEME': Const.EN_THEME,
 			'IJP_EXCEPT': Const.IJP_EXCEPT,
