@@ -3,6 +3,7 @@
 	"MAIN_PORTS": [ ["your full game server url here", "your game server port here"] ],
 	"WEB_PORT": 80,
 	"SSL_PORT": 443,
+	"TRUST_PROXY": "",
 	"KKUTUHOT_PATH": "kkutuhot.json",
 	"PASS":"Your password for management Here",
 	"PG_ADDR": "Your PostgreSQL server Address Here",

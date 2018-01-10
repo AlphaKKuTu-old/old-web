@@ -107,6 +107,9 @@ Server.use((req, res, next) => {
 		next();
 	}
 });
+if(GLOBAL.TRUST_PROXY) {
+	Server.set('trust proxy', GLOBAL.TRUST_PROXY)
+}
 /* use this if you want
 
 DDDoS = new DDDoS({
