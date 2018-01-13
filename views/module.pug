@@ -56,9 +56,6 @@ mixin Menu()
 					div.menu-sub-separator
 					- for(j in MENU[i].sub)
 						div.menu-sub-btn(onclick='location.href = "'+MENU[i].sub[j].href+'";')!= L(MENU[i].sub[j].key)
-		div#quick-search
-			input#quick-search-tf(placeholder=L('QUICK_HOLDER'))
-			button#quick-search-btn!= L('QUICK_BTN')
 		div#account
 			span#profile= SESSION.profile ? JSON.stringify(SESSION.profile) : '{}'
 			div#account-info
@@ -68,12 +65,7 @@ mixin MMenu()
 		div.menu-btn(id='menu-item-GAMES')
 			+FA('bars')
 			+separator(10)
-			div.menu-sub-btn(onclick='location.href = "http://jjo.kr/";', style='margin: 7px 0px; height: 25px;')!= L('HOME')
-			div.menu-sub-btn(onclick='location.href = "http://kkutu.kr/";', style='margin: 7px 0px; height: 25px;')!= L('GAMES_KKUTU')
-			div.menu-sub-btn(onclick='location.href = "http://jjo.kr/gallery";', style='margin: 7px 0px; height: 25px;')!= L('GALLERY')
-		div#quick-search
-			input#quick-search-tf(placeholder=L('QUICK_HOLDER'))
-			button#quick-search-btn!= L('QUICK_BTN')
+			div.menu-sub-btn(onclick='location.href = "https://mori.space/";', style='margin: 7px 0px; height: 25px;')!= L('HOME')
 		div#account
 			span#profile= SESSION.profile ? JSON.stringify(SESSION.profile) : '{}'
 			div#account-info
@@ -96,15 +88,18 @@ mixin PageHead(min)
 		link(rel='stylesheet', href='/css/expl.css')
 	script(type='text/javascript', src='/js/jquery.js')
 	script(type='text/javascript', src='/language/'+locals.page.replace("/", "_")+'/'+locals.lang)
+
+	// Global site tag (gtag.js) - Google Analytics
+	script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-61070671-8')
+	script.
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'UA-61070671-8');
 	
 	if PUBLIC && !SESSION.admin
-		//script(type='text/javascript', src='/js/google.js')
 	script(type='text/javascript', src='/js/global.min.js')
-	//볕뉘 수정
 	script(type='text/javascript', src='/js/sweetalert.min.js')
-	//볕뉘 수정 끝
-	if !min
-		//script(type='text/javascript', src='/js/facebook.js')
 	if block
 		block
 	link(rel='stylesheet', href='/css/in_'+locals.page.replace("/", "_")+'.css')
