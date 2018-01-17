@@ -138,7 +138,7 @@ DB.ready = function(){
 	}, 600000);
 	setInterval(function(){
 		gameServers.forEach(function(v){
-			if(v.socket) v.socket.send(`{"type":"seek"}`);
+			if(v.socket && v.connected) v.socket.send(`{"type":"seek"}`);
 			else v.seek = undefined;
 		});
 	}, 4000);
@@ -170,18 +170,24 @@ Const.MAIN_PORTS.forEach(function(v, i){
 	let KEY = GLOBAL.WS_KEY+'-'+(process.env['WS_KEY'] != undefined ? process.env['WS_KEY'] : 1);
 	
 	gameServers[i] = new GameClient(i, `${v}/${KEY}`);
+	global.gameServers = gameServers;
 });
 function GameClient(id, url){
 	let my = this;
 	
 	my.id = id;
+	my.tryConnet = 0;
+	my.connected = false;
 	let override;
 	if(url.match(/127\.0\.0\.[0-255]/) != null) {
 		override = false;
 	} else {
 		override = true;
 	}
-	my.socket = new WS(url, {perMessageDeflate: false, rejectUnauthorized: override});
+	my.socket = new WS(url, {
+		perMessageDeflate: false,
+		rejectUnauthorized: override
+	});
 	
 	my.send = function(type, data){
 		if(!data) data = {};
@@ -191,24 +197,40 @@ function GameClient(id, url){
 	};
 	function onGameOpen() {
 		JLog.info(`Game server #${my.id} connected`);
+		my.connected = true;
 	}
 	function onGameError (err) {
+		my.connected = true;
+		my.tryConnet++
+
 		JLog.warn(`Game server #${my.id} has an error: ${err.toString()}`);
 	}
 	function onGameClose (code) {
+		my.connected = false;
+
 		JLog.error(`Game server #${my.id} closed: ${code}`);
 		my.socket.removeAllListeners();
 		delete my.socket;
-		JLog.info('Retry connect to 10 seconds');
-		setTimeout(() => {
-			my.socket = new WS(url, {perMessageDeflate: false, rejectUnauthorized: override});
-			my.socket.on('open', onGameOpen);
-			my.socket.on('error', onGameError);
-			my.socket.on('close', onGameClose);
-			my.socket.on('message', onGameMessage);
-		}, 10000);
+
+		if (my.tryConnet < 5) {
+			JLog.info(`Retry connect to 5 seconds, try: ${my.tryConnet}`);
+			setTimeout(() => {
+				my.socket = new WS(url, {
+					perMessageDeflate: false,
+					rejectUnauthorized: override,
+					handshakeTimeout: 2000
+				});
+				my.socket.on('open', onGameOpen);
+				my.socket.on('error', onGameError);
+				my.socket.on('close', onGameClose);
+				my.socket.on('message', onGameMessage);
+			}, 5000);
+		} else {
+			JLog.info('connect fail.');
+		}
 	}
 	function onGameMessage (data) {
+		if (my.tryConnet !== 0) my.tryConnet = 0;
 		let _data = data;
 		let i;
 		
