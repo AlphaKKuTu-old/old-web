@@ -170,7 +170,6 @@ Const.MAIN_PORTS.forEach(function(v, i){
 	let KEY = GLOBAL.WS_KEY+'-'+(process.env['WS_KEY'] != undefined ? process.env['WS_KEY'] : 1);
 	
 	gameServers[i] = new GameClient(i, `${v}/${KEY}`);
-	global.gameServers = gameServers;
 });
 function GameClient(id, url){
 	let my = this;
