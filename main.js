@@ -200,7 +200,9 @@ function GameClient(id, url){
 	}
 	function onGameError (err) {
 		my.connected = true;
-		my.tryConnet++
+		if (GLOBAL.GAME_FAIL_RETRY > 0 ) { 
+			my.tryConnet++
+		}
 
 		JLog.warn(`Game server #${my.id} has an error: ${err.toString()}`);
 	}
@@ -212,7 +214,7 @@ function GameClient(id, url){
 		delete my.socket;
 
 		if (my.tryConnet < 5) {
-			JLog.info(`Retry connect to 5 seconds, try: ${my.tryConnet}`);
+			JLog.info(`Retry connect to 5 seconds` + (GLOBAL.GAME_FAIL_RETRY > 0 ? `, try: ${my.tryConnet}` : ''));
 			setTimeout(() => {
 				my.socket = new WS(url, {
 					perMessageDeflate: false,
