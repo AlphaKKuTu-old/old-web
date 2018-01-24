@@ -29,7 +29,7 @@ const GLOBAL	 = require("../global.json");
 const lib 	= require('kkutu-lib');
 const JLog	 = lib.jjlog;
 const Lizard	 = lib.lizard;
-const WebInit	 = require('./webinit.js');
+const WebInit	 = require('../webinit.js');
 
 exports.run = function(Server, page){
 
