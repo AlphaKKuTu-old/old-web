@@ -33,7 +33,8 @@ const LIST = [
 	"in_game_kkutu_help",
 	"in_admin",
 	"in_portal",
-	"in_loginfail"
+	"in_loginfail",
+	"in_404"
 ];
 const KKUTU_LIST = [
 	"lib/kkutu/head.js",
@@ -46,7 +47,7 @@ const KKUTU_LIST = [
 	"lib/kkutu/rule_daneo.js",
 	"lib/kkutu/rule_sock.js",
 	"lib/kkutu/body.js",
-	"lib/kkutu/tail.js",
+	"lib/kkutu/tail.js"
 ];
 
 module.exports = function(grunt){

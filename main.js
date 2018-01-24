@@ -314,9 +314,7 @@ Server.get("/servers", function(req, res){
 	res.send({ list: list, max: Const.KKUTU_MAX });
 });
 
-Server.post("/session/set", function(req, res){
-	res.sendStatus(200);
-});
-Server.get("/legal/:page", function(req, res){
-	page(req, res, "legal/"+req.params.page);
+// 404 page
+Server.use('/*', function(req, res, next){
+	page(req, res, '404', undefined, 404);
 });

@@ -52,8 +52,9 @@ function getLanguage(locale, page, shop){
 	
 	return R;
 }
-function page(req, res, file, data){
-	if(data == undefined)	data = {};
+function page(req, res, file, data, code){
+	if(data === undefined)	data = {};
+	if(code === undefined)	code = 200;
 	if(req.session.createdAt){
 		if(new Date() - req.session.createdAt > 3600000){
 			delete req.session.profile;
@@ -91,7 +92,7 @@ function page(req, res, file, data){
 	}
 	
 	JLog.log(`${addr.slice(7)}@${sid.slice(0, 10)} ${data.page}, ${JSON.stringify(req.params)}`);
-	res.render(data.page, data, function(err, html){
+	res.status(code).render(data.page, data, function(err, html){
 		if(err) res.send(err.toString());
 		else res.send(html);
 	});
