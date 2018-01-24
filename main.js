@@ -162,6 +162,11 @@ DB.ready = function(){
 		const options = secure(Const.SSL_OPTIONS);
 		https.createServer(options, Server).listen(GLOBAL.SSL_PORT);
 	}
+
+	// 404 page
+	Server.use('/*', function(req, res, next){
+		page(req, res, '404', undefined, 404);
+	});
 };
 Const.MAIN_PORTS.forEach(function(v, i){
 	if(Array.isArray(v)) {
@@ -312,9 +317,4 @@ Server.get("/servers", function(req, res){
 		list[i] = v.seek;
 	});
 	res.send({ list: list, max: Const.KKUTU_MAX });
-});
-
-// 404 page
-Server.use('/*', function(req, res, next){
-	page(req, res, '404', undefined, 404);
 });
