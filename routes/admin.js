@@ -29,6 +29,7 @@ const GLOBAL	 = require("../global.json");
 const lib 	= require('kkutu-lib');
 const JLog	 = lib.jjlog;
 const Lizard	 = lib.lizard;
+const WebInit	 = require('./webinit.js');
 
 exports.run = function(Server, page){
 
@@ -273,15 +274,16 @@ function noticeAdmin(req, ...args){
 	JLog.info(`[ADMIN] ${req.originalUrl} ${req.ip} | ${args.join(' | ')}`);
 }
 function checkAdmin(req, res){
+	const page = WebInit.page;
 	if(global.isPublic){
 		if(req.session.profile){
 			if(GLOBAL.ADMIN.indexOf(req.session.profile.id) == -1){
 				req.session.admin = false;
-				return res.send({ error: 400 }), false;
+				return page(req, res, '404', undefined, 404), false;
 			}
 		}else{
 			req.session.admin = false;
-			return res.send({ error: 400 }), false;
+			return page(req, res, '404', undefined, 404), false;
 		}
 	}
 	return true;
