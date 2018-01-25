@@ -137,16 +137,16 @@
 }
 
 .jjoObj.jjoEyeL {
-	left: 5.05em;
-	top: 13px;
+	left: 5.05em !important;
+	top: 1.5em !important;
 }
 .jjoObj.jjoNose {
-	left: 180px;
-	top: 10px;
+	left: 11.2em !important;
+	top: 1.21em !important;
 }
 .jjoObj.jjoEyeR {
-	left: 17.55em;
-	top: 13px;
+	left: 17.55em !important;
+	top: 1.5em !important;
 }
 .jjoDisplayBar {
 	width: 325px !important;
