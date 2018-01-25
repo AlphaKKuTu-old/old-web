@@ -65,7 +65,7 @@ span{
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	width: 100px;
-	height: 26px;
+	height: 16px;
 	margin-top: 2px;
 	font-size: 15px;
 	text-align: center;
@@ -144,7 +144,7 @@ span{
 #account-info:hover{ color: #EEEEEE; }
 #global-notice{
 	padding: 3px 0px;
-	margin-top: 30px;
+	margin-top: 40px;
 	color: #111111;
 	text-align: center;
 	font-weight: bold;

@@ -95,3 +95,24 @@
 	from{ background-position: 0px 0px; }
 	to{ background-position: -200px -200px; }
 }
+
+.ad {
+	float: left;
+	width: calc(100% - 4px);
+	margin-top: 0.8em;
+	margin-bottom: 0.8em;
+	border: 2px solid #CCC;
+	background-color: #EEE;
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
+	position: relative;
+}
+.ad p {
+	color: #777;
+	font-size: 0.4em;
+	position: absolute;
+	margin: 0;
+	bottom: 0;
+	right: 0;
+	margin-right: 4em;
+}
