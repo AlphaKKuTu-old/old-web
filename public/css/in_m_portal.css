@@ -33,7 +33,9 @@
 }
 
 #menu-bar {
-	float: right;margin-top: -95px;
+	float: left;
+	margin: 10px 0px 10px calc(50% - 136px);
+	width: 100%;
 }
 #menu-bar a{
 	display: block;
@@ -57,10 +59,11 @@
 	border-bottom-left-radius: inherit;
 	border-bottom-right-radius: inherit;
 }
-	#game-start:hover{ font-size: 24px; background-color: rgba(0, 0, 0, 0.5); }
-.server-list-box{
-	float: right;
-	width: 100%;
+#game-start:hover{ font-size: 24px; background-color: rgba(0, 0, 0, 0.5); }
+
+.server-list-box {
+	float: left;
+	margin-left: calc(50% - 160px);
 	background-color: rgba(0, 0, 0, 0.4);
 }
 .server-list-title{
@@ -90,8 +93,8 @@
 		.ss-p{ background-color: #EE3; }
 		.ss-q{ background-color: #F55; }
 		.ss-x{ background-color: #777; }
-	.server-name{ width: 50px; }
-	.server-people{ width: 136px; height: 100%; }
+	.server-name{ width: 60px; }
+	.server-people{ width: 190px; height: 100%; }
 		.server-people>.graph-bar{ background-image: url(/img/blue_gauge.png); }
 		.server-people>label{ position: relative; display: block; top: -14px; width: 100%; text-align: center; font-size: 11px; }
 	.server-enter{ width: 50px; text-align: center; }
@@ -149,9 +152,10 @@
 	top: 23px;
 }
 .jjoDisplayBar {
-	width: 325px;
-	height: 85px;
-	margin: auto;
+	margin-top: -30px !important;
+	width: 325px !important;
+	height: 85px !important;
+	margin: auto !important;
 }
 
 #menus {
@@ -162,8 +166,9 @@
 }
 
 .box {
-	height: 100%;
-	width: 100%;
+	float: left;
+	width: calc(100% - 4px);
 	border: 2px solid #CCC;
+	margin-top: 10px;
 	background-color: #EEE;
 }

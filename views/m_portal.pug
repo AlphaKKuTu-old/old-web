@@ -21,35 +21,33 @@ block Subject
 
 block CSS
 	link(rel='stylesheet', href='/css/in_game_kkutu.css')
-	link(rel='stylesheet', href='/css/in_portal.css')
 
 block JS
 	script(type='text/javascript', src='/js/in_portal.min.js')
 
 block Middle
 	+separator(5)
-	div(style='margin-left: calc(50% - 170px);')
-		div(style='float: left; padding-left: 70px;')
+	div
+		#topDiv
 			h3#holder= L('title')
 			img#logo(src='/img/kkutu/short_logo.png')
-		div.jjoriping(style='margin-top: 10px;')
-			img.jjoObj.jjoEyeL(src='/img/jjoeyeL.png', style='top: 40px; left: -270px;')
-			img.jjoObj.jjoNose(src='/img/jjonose.png', style='top: 42px; left: -170px;')
-			img.jjoObj.jjoEyeR(src='/img/jjoeyeR.png', style='top: 40px; left: -70px;')
-			div.jjoDisplayBar(style='float: left; margin-top: -30px; width: 325px; height: 85px;')
+		div.jjoriping
+			img.jjoObj.jjoEyeL(src='/img/jjoeyeL.png')
+			img.jjoObj.jjoNose(src='/img/jjonose.png')
+			img.jjoObj.jjoEyeR(src='/img/jjoeyeR.png')
+			.jjoDisplayBar
 				button#game-start.jjo-display= L('gameStart')
-	div#menu-bar(style='float: left; margin: 10px 0px 10px calc(50% - 136px); width: 100%;')
-		a(target='_blank', href='https://discord.gg/sEatfBw', style='background-color: #7289DA;')= L('discord')
+	#menu-bar
+		a(target='_blank', href='https://discord.gg/sEatfBw', style='background-color: #7289DA; font-size: 14px;')= L('discord')
 		a(target='_blank', href='//blog.jjo.kr/', style='background-color: #4078DC;')= L('CREATOR')
-	div(style='float: left; margin-left: calc(50% - 160px);')
-		div.server-list-box
-			h3.server-list-title
-				a#server-refresh
-					+FA('refresh')
-					+Expl(L('serverRefresh'))
-				label= L('serverList')
-				label#server-total(style='color: #AAA; font-size: 13px;')
-			div#server-list
+	.server-list-box
+		h3.server-list-title
+			a#server-refresh
+				+FA('refresh')
+				+Expl(L('serverRefresh'))
+			label= L('serverList')
+			label#server-total
+		div#server-list
 	.ad(style="margin-top: 30px;")
 		script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
 		// kkutu-mobile-main
@@ -57,7 +55,7 @@ block Middle
 		script.
 			(adsbygoogle = window.adsbygoogle || []).push({});
 		p Google Ad
-	div(style='float: left; width: calc(100% - 4px); border: 2px solid #CCC; margin-top: 10px; background-color: #EEE;')
+	.box
 		iframe#kkutu-bulletin(width='100%', height='400px', src='/kkutu_bulletin.html')
 	.ad(style="margin-top: 30px;")
 		script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')

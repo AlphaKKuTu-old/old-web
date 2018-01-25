@@ -32,9 +32,9 @@ block Middle
 			img.jjoObj.jjoEyeL(src='/img/jjoeyeL.png')
 			img.jjoObj.jjoNose(src='/img/jjonose.png')
 			img.jjoObj.jjoEyeR(src='/img/jjoeyeR.png')
-			div.jjoDisplayBar(style='width: 325px; height: 85px; margin: auto;')
+			.jjoDisplayBar
 				button#game-start.jjo-display= L('gameStart')
-		div#menu-bar()
+		#menu-bar
 			a(target='_blank', href='https://discord.gg/sEatfBw', style='background-color: #7289DA;')= L('discord')
 			a(target='_blank', href='//blog.jjo.kr/', style='background-color: #4078DC;')= L('CREATOR')
 
@@ -47,7 +47,7 @@ block Middle
 		p Google Ad
 
 	#menus
-		div.server-list-box
+		.server-list-box
 			h3.server-list-title
 				a#server-refresh
 					+FA('refresh')
