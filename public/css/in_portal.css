@@ -108,8 +108,8 @@
 .ad {
 	float: left;
 	width: 100%;
-	margin-top: 0.8em;
-	margin-bottom: 0.8em;
+	margin-top: 0.8em !important;
+	margin-bottom: 0.8em !important;
 	border: 2px solid #CCC;
 	background-color: #EEE;
 	padding-top: 0.4em;
