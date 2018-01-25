@@ -33,6 +33,7 @@ const LIST = [
 	"in_game_kkutu_help",
 	"in_admin",
 	"in_portal",
+	"in_m_portal",
 	"in_loginfail",
 	"in_404"
 ];
