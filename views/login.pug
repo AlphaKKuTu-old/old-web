@@ -38,6 +38,13 @@ html
 					a(href="/login/" + val.vendor)
 						button(style="color: " + val.fontColor + "; background-color: " + val.color + ";")= L(val.displayName)
 		div.login-legal!= L('loginLegal')
+		.ad
+			script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+			// kkutu-login
+			ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-2810659463174293', data-ad-slot='4256727837', data-ad-format='auto')
+			script.
+				(adsbygoogle = window.adsbygoogle || []).push({});
+			p Google Ad
 	block CSS
 		link(rel='stylesheet', href='/css/oauth-buttons.min.css')
 	block JS
