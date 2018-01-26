@@ -35,8 +35,12 @@
 	},
 	"ad": {
 		"ad1": "/img/ready_banner.jpg",
+		"ad1url": "#",
 		"ad2": "/img/ready_banner.jpg",
+		"ad2url": "#",
 		"ad3": "/img/ready_banner.jpg",
-		"ad4": "/img/ready_banner.jpg"
+		"ad3url": "#",
+		"ad4": "/img/ready_banner.jpg",
+		"ad4url": "#"
 	}
 }

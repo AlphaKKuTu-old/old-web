@@ -308,9 +308,13 @@ Server.get("/", function(req, res){
 			'ogTitle': "글자로 놀자! 끄투 온라인",
 			'ogDescription': "끝말잇기가 이렇게 박진감 넘치는 게임이었다니!",
 			ad1: GLOBAL.ad.ad1,
+			ad1url: GLOBAL.ad.ad1url,
 			ad2: GLOBAL.ad.ad2,
+			ad2url: GLOBAL.ad.ad2url,
 			ad3: GLOBAL.ad.ad3,
-			ad4: GLOBAL.ad.ad4
+			ad3url: GLOBAL.ad.ad3url,
+			ad4: GLOBAL.ad.ad4,
+			ad4url: GLOBAL.ad.ad4url
 		});
 	}
 });
