@@ -57,7 +57,10 @@
 	border-bottom-left-radius: inherit;
 	border-bottom-right-radius: inherit;
 }
-	#game-start:hover{ font-size: 24px; background-color: rgba(0, 0, 0, 0.5); }
+#game-start:hover {
+	font-size: 24px;
+	background-color: rgba(0, 0, 0, 0.5);
+}
 .server-list-box{
 	float: right;
 	width: 100%;
@@ -76,26 +79,60 @@
 	color: #AAA;
 	font-size: 13px;
 }
-.server{
+.server {
 	float: left;
 	margin: 2px 0px;
-	width: 320px;
+	width: 100%;
 	height: 16px;
 	font-size: 13px;
 	cursor: pointer;
 }
-	.server>div{ float: left; }
-	.server-status{ border-radius: 6px; margin: 2px; width: 12px; height: 12px; }
-		.ss-o{ background-color: #3E3; }
-		.ss-p{ background-color: #EE3; }
-		.ss-q{ background-color: #F55; }
-		.ss-x{ background-color: #777; }
-	.server-name{ width: 50px; }
-	.server-people{ width: 136px; height: 100%; }
-		.server-people>.graph-bar{ background-image: url(/img/blue_gauge.png); }
-		.server-people>label{ position: relative; display: block; top: -14px; width: 100%; text-align: center; font-size: 11px; }
-	.server-enter{ width: 50px; text-align: center; }
-	.server:hover{ background-color: rgba(255, 255, 255, 0.1); }
+.server div{
+	float: left;
+}
+.server-status{
+	border-radius: 6px;
+	margin: 2px;
+	width: 12px;
+	height: 12px;
+}
+.ss-o {
+	background-color: #3E3;
+}
+.ss-p {
+	background-color: #EE3;
+}
+.ss-q {
+	background-color: #F55;
+}
+.ss-x {
+	background-color: #777;
+}
+.server-name {
+	width: 50px;
+}
+.server-people {
+	width: 136px;
+	height: 100%;
+}
+.server-people .graph-bar { 
+	background-image: url(/img/blue_gauge.png);
+}
+.server-people label {
+	position: relative;
+	display: block;
+	top: -14px;
+	width: 100%;
+	text-align: center;
+	font-size: 11px;
+}
+.server-enter {
+	width: 50px;
+	text-align: center;
+}
+.server:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
 
 #Background{
 	animation: BGScroll 4s linear infinite;
