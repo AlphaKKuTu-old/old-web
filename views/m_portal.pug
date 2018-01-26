@@ -22,6 +22,9 @@ block Subject
 block CSS
 	link(rel='stylesheet', href='/css/in_game_kkutu.css')
 
+block JS
+	script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+
 block Middle
 	+separator(5)
 	div
@@ -46,7 +49,6 @@ block Middle
 			label#server-total
 		div#server-list
 	.ad(style="margin-top: 30px;")
-		script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
 		// kkutu-mobile-main
 		ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-2810659463174293', data-ad-slot='1248432873', data-ad-format='auto')
 		script.
@@ -54,8 +56,19 @@ block Middle
 		p Google Ad
 	.box
 		iframe#kkutu-bulletin(width='100%', height='400px', src='/kkutu_bulletin.html')
-	.ad(style="margin-top: 30px; margin-bottom: 40px;")
-		script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+	.ad(style="margin-top: 20px !important; margin-bottom: 10px !important;")
+		img(src=locals.ad1, style="width: 100%;")
+		p Custom Banner
+	.ad(style="margin-top: 0px !important; margin-bottom: 10px !important;")
+		img(src=locals.ad2, style="width: 100%;")
+		p Custom Banner
+	.ad(style="margin-top: 0px !important; margin-bottom: 10px !important;")
+		img(src=locals.ad3, style="width: 100%;")
+		p Custom Banner
+	.ad(style="margin-top: 0px !important; margin-bottom: 10px !important;")
+		img(src=locals.ad4, style="width: 100%;")
+		p Custom Banner
+	.ad(style="margin-top: 20px !important; min-height: 20px !important;")
 		// kkutu-mobile-main
 		ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-2810659463174293', data-ad-slot='1248432873', data-ad-format='auto')
 		script.

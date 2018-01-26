@@ -306,7 +306,11 @@ Server.get("/", function(req, res){
 			'ogImage': "http://kkutu.kr/img/kkutu/logo.png",
 			'ogURL': "http://kkutu.kr/",
 			'ogTitle': "글자로 놀자! 끄투 온라인",
-			'ogDescription': "끝말잇기가 이렇게 박진감 넘치는 게임이었다니!"
+			'ogDescription': "끝말잇기가 이렇게 박진감 넘치는 게임이었다니!",
+			ad1: GLOBAL.ad.ad1,
+			ad2: GLOBAL.ad.ad2,
+			ad3: GLOBAL.ad.ad3,
+			ad4: GLOBAL.ad.ad4
 		});
 	}
 });

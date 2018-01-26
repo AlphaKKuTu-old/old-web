@@ -32,5 +32,11 @@
 		"PFX": "Your PFX Bundle Here",
 		"isPFX": false,
 		"isCA": false
+	},
+	"ad": {
+		"ad1": "/img/ready_banner.jpg",
+		"ad2": "/img/ready_banner.jpg",
+		"ad3": "/img/ready_banner.jpg",
+		"ad4": "/img/ready_banner.jpg"
 	}
 }
