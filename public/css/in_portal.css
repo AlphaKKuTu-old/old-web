@@ -121,7 +121,7 @@
 .server-people label {
 	position: relative;
 	display: block;
-	top: -14px;
+	top: 0.15em;
 	width: 100%;
 	text-align: center;
 	font-size: 11px;
