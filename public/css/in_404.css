@@ -47,3 +47,32 @@ button {
 .middle p {
 	text-align: center;
 }
+
+#picture {
+	width: 200px;
+	height: 200px;
+	display: block;
+	margin: auto;
+	margin-bottom: 1.5em;
+}
+
+.ad {
+	margin: auto;
+	width: 80%;
+	margin-top: 5em;
+	margin-bottom: 0.8em;
+	border: 2px solid #CCC;
+	background-color: #EEE;
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
+	position: relative;
+}
+.ad p {
+	color: #777;
+	font-size: 0.4em;
+	position: absolute;
+	margin: 0;
+	bottom: 0;
+	right: 0;
+	margin-right: 4em;
+}
