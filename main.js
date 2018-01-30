@@ -180,14 +180,15 @@ function GameClient(id, url){
 	let my = this;
 	
 	my.id = id;
-	my.tryConnet = 0;
+	my.tryConnect = 0;
 	my.connected = false;
 	let override;
-	if(url.match(/127\.0\.0\.[0-255]/) != null) {
+	if(!url.match(/127\.0\.0\.[0-255]/)) {
 		override = false;
 	} else {
 		override = true;
 	}
+
 	my.socket = new WS(url, {
 		perMessageDeflate: false,
 		rejectUnauthorized: override
@@ -205,8 +206,8 @@ function GameClient(id, url){
 	}
 	function onGameError (err) {
 		my.connected = true;
-		if (GLOBAL.GAME_FAIL_RETRY > 0 ) { 
-			my.tryConnet++
+		if (GLOBAL.GAME_SERVER_RETRY > 0 ) { 
+			my.tryConnect++
 		}
 
 		JLog.warn(`Game server #${my.id} has an error: ${err.toString()}`);
@@ -218,8 +219,8 @@ function GameClient(id, url){
 		my.socket.removeAllListeners();
 		delete my.socket;
 
-		if (my.tryConnet <= GLOBAL.GAME_FAIL_RETRY) {
-			JLog.info(`Retry connect to 5 seconds` + (GLOBAL.GAME_FAIL_RETRY > 0 ? `, try: ${my.tryConnet}` : ''));
+		if (my.tryConnect <= GLOBAL.GAME_SERVER_RETRY) {
+			JLog.info(`Retry connect to 5 seconds` + (GLOBAL.GAME_SERVER_RETRY > 0 ? `, try: ${my.tryConnect}` : ''));
 			setTimeout(() => {
 				my.socket = new WS(url, {
 					perMessageDeflate: false,
@@ -236,7 +237,7 @@ function GameClient(id, url){
 		}
 	}
 	function onGameMessage (data) {
-		if (my.tryConnet !== 0) my.tryConnet = 0;
+		if (my.tryConnect !== 0) my.tryConnect = 0;
 		let _data = data;
 		let i;
 		
