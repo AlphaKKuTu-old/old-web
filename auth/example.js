@@ -1,7 +1,7 @@
 const config = require('../auth.json')
 
 module.exports.config = {
-  strategy: require('passport-naver').Strategy, // example: naver, require strategy
+  Strategy: require('passport-naver').Strategy, // example: naver, require strategy
   color: '#000000', // example: #1EC800
   fontColor: '#FFFFFF', // example: #FFFFFF
   vendor: '', // example: naver

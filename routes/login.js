@@ -71,7 +71,7 @@ exports.run = (Server, page) => {
           successRedirect: '/',
           failureRedirect: '/loginfail'
         }))
-        passport.use(new auth.config.Strategy(auth.strategyConfig, auth.strategy(process, MainDB /*, Ajae */)))
+        passport.use(new auth.config.Strategy(auth.strategyConfig, auth.Strategy(process, MainDB /*, Ajae */)))
         if (auth.config['useoAuth-buttons']) {
           strategyList[auth.config.vendor] = {
             'useoAuth-buttons': true,
