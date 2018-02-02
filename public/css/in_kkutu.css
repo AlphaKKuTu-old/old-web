@@ -826,7 +826,7 @@ iframe{
 	border-top-right-radius: 0px;
 	border-bottom-right-radius: 0px;
 	margin-top: 5px;
-	width: calc(100% - 82px);
+	width: 89%;
 	height: 20px;
 }
 #ChatBtn{

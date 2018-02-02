@@ -67,7 +67,14 @@ module.exports = function (grunt) {
         banner: '/**\n' + LICENSE + '\n*/\n\n'
       },
       build: {
-        files: files
+        files: [{
+          expand: true,
+          cwd: 'public/js',
+          src: ['*.min.js', '!oauth-buttons.min.js',
+            '!sweetalert.min.js', '!jquery.js'],
+          dest: 'public/js',
+          ext: '.min.js'
+        }]
       }
     },
     concat: {
@@ -75,12 +82,28 @@ module.exports = function (grunt) {
         src: KKUTU_LIST,
         dest: 'lib/in_game_kkutu.js'
       }
+    },
+    babel: {
+      options: {
+        sourceMap: false,
+        presets: ['es2015']
+      },
+      build: {
+        files: [{
+          expand: true,
+          cwd: '/lib',
+          src: ['*.js'],
+          dest: '/public/js',
+          ext: '.min.js'
+        }]
+      }
     }
   })
   grunt.loadNpmTasks('grunt-contrib-uglify')
   grunt.loadNpmTasks('grunt-contrib-concat')
+  grunt.loadNpmTasks('grunt-babel')
 
-  grunt.registerTask('default', ['concat', 'uglify'])
+  grunt.registerTask('default', ['concat', 'babel', 'uglify'])
   grunt.registerTask('pack', 'Log', function () {
     let done = this.async()
     let url = path.join(__dirname, KKUTU)
