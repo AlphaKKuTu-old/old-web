@@ -749,7 +749,7 @@ iframe{
 	width: 100%;
 	overflow-y: scroll;
 }
-#Talk{
+.talk {
 	float: left;
 	border-right: none;
 	border-top-right-radius: 0px;
@@ -757,6 +757,7 @@ iframe{
 	margin-top: 5px;
 	width: 89%;
 	height: 20px;
+	display: none;
 }
 #ChatBtn{
 	float: left;

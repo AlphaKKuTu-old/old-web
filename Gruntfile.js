@@ -74,6 +74,9 @@ module.exports = function (grunt) {
             '!sweetalert.min.js', '!jquery.js'],
           dest: 'public/js',
           ext: '.min.js'
+        }, {
+          src: 'lib/in_game_kkutu.js',
+          dest: 'public/js/in_game_kkutu.min.js'
         }]
       }
     },
@@ -92,7 +95,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '/lib',
-          src: ['*.js'],
+          src: ['*.js', '!in_game_kkutu.js'],
           dest: '/public/js',
           ext: '.min.js'
         }]
