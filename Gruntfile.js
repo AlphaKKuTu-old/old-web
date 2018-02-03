@@ -47,6 +47,7 @@ const KKUTU_LIST = [
   'lib/kkutu/rule_typing.js',
   'lib/kkutu/rule_hunmin.js',
   'lib/kkutu/rule_daneo.js',
+  'lib/kkutu/rule_drawing.js',
   'lib/kkutu/rule_sock.js',
   'lib/kkutu/body.js',
   'lib/kkutu/tail.js'
@@ -71,7 +72,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: 'public/js',
           src: ['*.min.js', '!oauth-buttons.min.js',
-            '!sweetalert.min.js', '!jquery.js'],
+            '!sweetalert.min.js', '!jquery.js', '!fabric.min.js'],
           dest: 'public/js',
           ext: '.min.js'
         }, {

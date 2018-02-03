@@ -428,6 +428,7 @@ iframe{
 	}
 	.jjoriping{ width: 500px; }
 	.cw.jjoriping{ margin-top: -10px; width: 322px; }
+	.dg.jjoriping{ margin-left: -20.8em }
 		.jjoObj{ position: relative; }
 		.jjoEyeL{ top: 11px; left: 0px; }
 		.jjoNose{ top: 9px; left: 181px; }
@@ -525,6 +526,7 @@ iframe{
 	.cw.rounds{ margin-top: -380px; }
 		.rounds label{ margin: 0px 3px; }
 		.cw.rounds label{ cursor: pointer; }
+		.dg.rounds label{ cursor: default !important; }
 		.rounds-current{ color: #FFFF3B; font-size: 16px; }
 		.round-effect{ animation: RoundEffect 0.8s ease 1; }
 	.history-holder{
@@ -921,4 +923,8 @@ iframe{
 	0%		{ margin-top: -80px; font-size: 24px; opacity: 1; }
 	10%		{ margin-top: -95px; font-size: 36px; opacity: 0.95; }
 	100%	{ margin-top: -25px; font-size: 20px; opacity: 0.1; }
+}
+
+#canvas {
+	background-color: #fff;
 }
