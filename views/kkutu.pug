@@ -174,14 +174,14 @@ block Middle
 					option(value=12)= L('modeKSS')
 					option(value=4)= L('modeCSQ')
 					option(value=9)= L('modeHUN')
-					// option(value=14)= L('modeKDG')
+					option(value=14)= L('modeKDG')
 				optgroup(label=L('mcEnglish'))
 					option(value=1)= L('modeESH')
 					option(value=0)= L('modeEKT')
 					option(value=7)= L('modeETY')
 					option(value=11)= L('modeEDA')
 					option(value=13)= L('modeESS')
-					// option(value=15)= L('modeEDG')
+					option(value=15)= L('modeEDG')
 		div.dialog-bar(style='margin-top: -5px; height: 50px;')
 			h4
 			h4#game-mode-expl.dialog-bar-value(style='width: 100%; font-size: 11px;')
@@ -409,6 +409,16 @@ block Middle
 		div.game-head
 			div.items
 			div.hints(style='display: none;')
+			div.tools(style='display: none;')
+				span#drawing= L('wordis')
+				span#drawing-title
+				label(for="drawing-line-width")= L('drawingLineWidth')
+				input#drawing-line-width(type="range", value="20", min="0", max="60")
+				br
+				label(for="drawing-color")= L('drawingColor')
+				input#drawing-color(type="color", value="#000000")
+				br
+				button#drawing-clear= L('drawingClear')
 			div.b-left.cwcmd(style='display: none;')
 				div.cw-q-head
 				input#cw-q-input(placeholder=L('inputHere'), style='width: 313px; height: 20px; font-size: 15px;')

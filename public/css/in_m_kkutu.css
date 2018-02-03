@@ -353,6 +353,28 @@ iframe{
 		width: 100%;
 		height: 30px;
 	}
+	.tools {
+		margin: 40px 5em 0px 5em;
+		width: 225px;
+		display: none;
+		background-color: #eeeeee;
+		border: 1px solid #000;
+		border-radius: 10px;
+		padding: 5px;
+		box-shadow: 0px 1px 1px #141414;
+	}
+	#drawing {
+		font-size: 14px;
+		width: 40%;
+		margin-bottom: 10px;
+		display: block;
+	}
+	#drawing-title {
+		font-size: 14px;
+		width: 60%;
+		margin-bottom: 10px;
+		display: block;
+	}
 		.hint-item{
 			width: calc(50% - 4px);
 			padding: 2px;
@@ -406,7 +428,10 @@ iframe{
 		}
 	.jjoriping{ width: 100%; }
 	.cw.jjoriping{ margin-top: -10px; }
-	.dg.jjoriping{ margin-left: -20.8em }
+	.dg.jjoriping{
+		margin-left: 1.5em;
+		width: 325px;
+	 }
 		.jjoObj{ position: relative; }
 		.jjoEyeL{ top: 11px; left: 0px; }
 		.jjoNose{ top: 9px; left: calc(50% - 70px); }
@@ -510,7 +535,12 @@ iframe{
 		text-align: center;
 		text-shadow: 0px 1px 1px #141414;
 	}
-	.cw.rounds{ margin-top: -380px; }
+	.cw.rounds{ margin-top: -415px; }
+	.dg.rounds{ margin-left: 0em !important; }
+	.painter.rounds{
+		margin-left: 0em !important;
+		margin-top: -55em !important;
+	}
 		.rounds label{ margin: 0px 3px; }
 		.rounds-current{ color: #FFFF3B; font-size: 16px; }
 	.history-holder{

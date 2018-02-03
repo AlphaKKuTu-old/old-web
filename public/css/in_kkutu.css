@@ -371,16 +371,36 @@ iframe{
 		width: 225px;
 		height: 110px;
 	}
-		.hint-item{
-			padding: 5px;
-			border-radius: 5px;
-			margin: 1px 0px;
-			color: #EEEEEE;
-			font-size: 13px;
-			max-height: 63px;
-			overflow: hidden;
-			background-color: #111111;
-		}
+	.tools{
+		margin: 40px 10px 0px 10px;
+		width: 225px;
+		display: none;
+		background-color: #eeeeee;
+		border: 1px solid #000;
+		border-radius: 10px;
+		padding: 20px;
+		box-shadow: 0px 1px 1px #141414;
+	}
+	#drawing {
+		font-size: 14px;
+		margin-bottom: 10px;
+		display: block;
+	}
+	#drawing-title {
+		font-size: 20px;
+		margin-bottom: 10px;
+		display: block;
+	}
+	.hint-item{
+		padding: 5px;
+		border-radius: 5px;
+		margin: 1px 0px;
+		color: #EEEEEE;
+		font-size: 13px;
+		max-height: 63px;
+		overflow: hidden;
+		background-color: #111111;
+	}
 	.b-left{
 		padding: 5px;
 		margin-top: 25px;
@@ -428,7 +448,7 @@ iframe{
 	}
 	.jjoriping{ width: 500px; }
 	.cw.jjoriping{ margin-top: -10px; width: 322px; }
-	.dg.jjoriping{ margin-left: -20.8em }
+	.dg.jjoriping{ margin-left: -25.8em }
 		.jjoObj{ position: relative; }
 		.jjoEyeL{ top: 11px; left: 0px; }
 		.jjoNose{ top: 9px; left: 181px; }
@@ -518,12 +538,15 @@ iframe{
 	}
 	.rounds{
 		margin-top: -130px;
-		width: 990px;
+		width: 100%;
+		margin: auto;
 		color: #FFFFFF;
 		text-align: center;
 		text-shadow: 0px 1px 1px #141414;
 	}
 	.cw.rounds{ margin-top: -380px; }
+	.dg.rounds{ margin-left: -5.0em; }
+	.painter.rounds{ margin-left: -1.5em !important;}
 		.rounds label{ margin: 0px 3px; }
 		.cw.rounds label{ cursor: pointer; }
 		.dg.rounds label{ cursor: default !important; }
