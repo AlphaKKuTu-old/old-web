@@ -538,14 +538,17 @@ iframe{
 	}
 	.rounds{
 		margin-top: -130px;
-		width: 100%;
-		margin: auto;
+		width: 990px;
 		color: #FFFFFF;
 		text-align: center;
 		text-shadow: 0px 1px 1px #141414;
 	}
 	.cw.rounds{ margin-top: -380px; }
-	.dg.rounds{ margin-left: -5.0em; }
+	.dg.rounds{
+		margin-left: -5.0em;
+		width: 100% !important;
+		margin: auto;
+	}
 	.painter.rounds{ margin-left: -1.5em !important;}
 		.rounds label{ margin: 0px 3px; }
 		.cw.rounds label{ cursor: pointer; }
