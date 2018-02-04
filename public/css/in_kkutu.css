@@ -547,7 +547,7 @@ iframe{
 	.dg.rounds{
 		margin-left: -5.0em;
 		width: 100% !important;
-		margin: auto;
+		margin-top: -380px;
 	}
 	.painter.rounds{ margin-left: -1.5em !important;}
 		.rounds label{ margin: 0px 3px; }
