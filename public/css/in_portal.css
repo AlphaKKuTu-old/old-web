@@ -152,6 +152,8 @@
 	padding-top: 0.4em;
 	padding-bottom: 0.4em;
 	position: relative;
+	background: #EEE url('/img/404.png') no-repeat center;
+	background-size: 50px 50px;
 }
 .ad p {
 	color: #777;
