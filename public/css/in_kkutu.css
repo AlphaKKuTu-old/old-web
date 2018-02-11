@@ -390,6 +390,9 @@ iframe{
 		font-size: 14px;
 		margin-bottom: 10px;
 		display: block;
+		overflow-x: scroll;
+		height: 34px;
+		white-space: nowrap;
 	}
 	#themeis {
 		font-size: 14px;
@@ -413,7 +416,7 @@ iframe{
 		box-shadow: 0px 1px 1px #141414;
 		padding: 5px 5px 5px 5px;
 		margin-top: 0px;
-		margin-bottom: 15px;
+		margin-bottom: 10px;
 	}
 	.palette div {
 		float: left;

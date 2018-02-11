@@ -374,6 +374,9 @@ iframe{
 		width: 60%;
 		margin-bottom: 10px;
 		display: block;
+		overflow-x: scroll;
+		height: 34px;
+		white-space: nowrap;
 	}
 	#themeis {
 		font-size: 14px;
@@ -402,7 +405,7 @@ iframe{
 		box-shadow: 0px 1px 1px #141414;
 		padding: 5px 5px 5px 5px;
 		margin-top: 0x;
-		margin-bottom: 15px;
+		margin-bottom: 10px;
 	}
 	.button-color#color-red {
 		background: #DEB887 url('/img/kkutu/paint_red.png') no-repeat center;
