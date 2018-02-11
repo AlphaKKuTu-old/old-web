@@ -155,6 +155,9 @@
 	background: #EEE url('/img/404.png') no-repeat center;
 	background-size: 50px 50px;
 }
+.ad.small {
+	background-size: 30px 30px !important;
+}
 .ad p {
 	color: #777;
 	font-size: 0.4em;
