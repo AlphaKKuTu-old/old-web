@@ -687,6 +687,10 @@ iframe{
 			animation: CurrentBlink 2s linear infinite;
 			background-color: #DDFFDD;
 		}
+		.game-user-drawing{
+			animation: CurrentBlink 2s linear infinite;
+			background-color: #9fd1f1;
+		}
 		.game-user-bomb{ border-color: #FF6666; }
 			.game-user-image{ margin: 3px 5px; width: 100px; height: 100px; }
 			.game-user-level{ margin: 1px; width: 18px; height: 18px; }
