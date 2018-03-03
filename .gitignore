@@ -32,3 +32,5 @@ public/js/global.min.js
 public/js/in_*.min.js
 auth.json
 .vscode
+yarn.lock
+package-lock.json
