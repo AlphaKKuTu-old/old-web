@@ -43,6 +43,7 @@ const passport = require('passport')
 const https = require('https')
 const secure = lib.secure
 const path = require('path')
+const sri = require('node-sri')
 
 const Language = {
   'ko_KR': require('./lang/ko_KR.json'),
@@ -53,6 +54,7 @@ const ROUTES = [
 ]
 const page = WebInit.page
 const gameServers = []
+let integrity
 
 WebInit.MOBILE_AVAILABLE = [
   'portal', 'main', 'kkutu'
@@ -143,6 +145,12 @@ DB.ready = function () {
       else v.seek = undefined
     })
   }, 4000)
+
+  sri.hash('./lib/in_game_kkutu.min.js', (err, hash) => {
+    if (err) JLog.error(err)
+    integrity = hash
+  })
+
   JLog.success('DB is ready.')
 
   DB.kkutu_shop_desc.find().on(function ($docs) {
@@ -313,7 +321,8 @@ Server.get('/', function (req, res) {
       ad3: GLOBAL.ad.ad3,
       ad3url: GLOBAL.ad.ad3url,
       ad4: GLOBAL.ad.ad4,
-      ad4url: GLOBAL.ad.ad4url
+      ad4url: GLOBAL.ad.ad4url,
+      'KKUTU_INTEGRITY': integrity
     })
   }
 })
