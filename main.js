@@ -78,9 +78,12 @@ const sessionConfigure = {
     client: Redis.createClient(redisConfig),
     ttl: 3600 * 12
   }),
-  secret: 'kkutu',
+  secret: '8xgDT&R63mdfghV-tq8ZmdRKAqzunJ#+X8rZZr8xDqZjzcRfkt*^x#Q8ha#rT+Rq',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 3600 * 12
+  }
 }
 
 JLog.info('<< KKuTu Web >>')
