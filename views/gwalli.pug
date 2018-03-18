@@ -28,23 +28,6 @@ block Middle
 		input#db-password(type='password', placeholder='암호')
 		input#db-lang(placeholder='테이블')
 	fieldset
-		legend 추가 요청 받기
-		div
-			button#injeong-go 조회
-			div
-				table
-					thead: tr
-						td 승인?
-						td 링크
-						td #
-						td theme
-						td writer
-						td createdAt
-					tbody#injeong-data
-			button#injeong-everything 모두 승인
-			button#injeong-nothing 모두 거절
-			button#injeong-apply 적용
-	fieldset
 		legend 상점 DB 다루기
 		div
 			input#shop-word(placeholder='품목 (~ALL)')
@@ -85,6 +68,7 @@ block Middle
 						td server
 						td lastLogin
 						td black
+						td blacktime
 						td friends
 					tbody#user-data
 			button#user-apply 적용

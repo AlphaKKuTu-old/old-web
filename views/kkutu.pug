@@ -41,7 +41,7 @@ block Subject
 	title= L('title')
 
 block JS
-	script(type='text/javascript', src='/js/in_game_kkutu.min.js', integrity= L['integrity'], crossorigin="anonymous")
+	script(type='text/javascript', src='/js/in_game_kkutu.min.js')
 	script(type='text/javascript', src='/js/fabric.min.js')
 	script(src='https://www.google.com/recaptcha/api.js')
 
@@ -485,11 +485,11 @@ block Middle
 		div.bar-text.my-gauge-text
 	+Product('Chat')
 		div#Chat
-		input.talk(maxlength=200)
-		input.talk(maxlength=200)
-		input#Talk.talk(maxlength=200)
-		input.talk(maxlength=200)
-		input.talk(maxlength=200)
+		input.talk(maxlength=200, autocomplete="off")
+		input.talk(maxlength=200, autocomplete="off")
+		input#Talk.talk(maxlength=200, autocomplete="off")
+		input.talk(maxlength=200, autocomplete="off")
+		input.talk(maxlength=200, autocomplete="off")
 		button#ChatBtn= L('send')
 	+Product('AD')
 

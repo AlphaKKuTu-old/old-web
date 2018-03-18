@@ -38,13 +38,6 @@ exports.run = function (Server, page) {
     req.session.admin = true
     page(req, res, 'gwalli')
   })
-  Server.get('/gwalli/injeong', function (req, res) {
-    if (!checkAdmin(req, res)) return
-
-    MainDB.kkutu_injeong.find([ 'theme', { $not: '~' } ]).limit(100).on(function ($list) {
-      res.send({ list: $list })
-    })
-  })
   Server.get('/gwalli/gamsi', function (req, res) {
     if (!checkAdmin(req, res)) return
 
@@ -146,30 +139,6 @@ exports.run = function (Server, page) {
         res.send({ goods: $docs, desc: $desc })
       })
     })
-  })
-  Server.post('/gwalli/injeong', function (req, res) {
-    if (!checkAdmin(req, res)) return
-    if (req.body.pw !== GLOBAL.PASS) return res.sendStatus(400)
-
-    let list = JSON.parse(req.body.list).list
-
-    list.forEach(function (v) {
-      if (v.ok) {
-        req.body.nof = true
-        req.body.lang = 'ko'
-        v.theme.split(',').forEach(function (w, i) {
-          setTimeout(function (lid, x) {
-            req.body.list = lid
-            req.body.theme = x
-            onKKuTuDB(req, res)
-          }, i * 1000, v._id.replace(/[^가-힣0-9]/g, ''), w)
-        })
-      } else {
-        MainDB.kkutu_injeong.update([ '_id', v._origin ]).set([ 'theme', '~' ]).on()
-      }
-      // MainDB.kkutu_injeong.remove([ '_id', v._origin ]).on();
-    })
-    res.sendStatus(200)
   })
   Server.post('/gwalli/kkutudb', onKKuTuDB)
   function onKKuTuDB (req, res) {
