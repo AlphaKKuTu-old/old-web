@@ -64,7 +64,7 @@ span{
 	border-top-right-radius: 0px;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
-	width: 100px;
+	min-width: 100px;
 	height: 16px;
 	margin-top: 2px;
 	font-size: 15px;
