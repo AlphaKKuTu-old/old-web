@@ -205,6 +205,11 @@ function GameClient (id, url) {
     my.connected = true
   }
   function onGameError (err) {
+    if (GLOBAL.RESTART_ON_CONNECT_FAILURE) {
+      JLog.warn(`Game server #${my.id} has an error: ${err.toString()}`)
+      JLog.warn('WebServer has stop')
+      process.exit(1)
+    }
     my.connected = true
     if (GLOBAL.GAME_SERVER_RETRY > 0) {
       my.tryConnect++
