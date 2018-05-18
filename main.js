@@ -139,6 +139,8 @@ DB.ready = function () {
   }, 600000)
   setInterval(function () {
     gameServers.forEach(function (v) {
+      console.log(v.socket)
+      console.log(v.connected)
       if (v.socket && v.connected) v.socket.send(`{"type":"seek"}`)
       else v.seek = undefined
     })
@@ -209,13 +211,14 @@ function GameClient (id, url) {
       JLog.warn(`Game server #${my.id} has an error: ${err.toString()}`)
       JLog.warn('WebServer has stop')
       process.exit(1)
-    }
-    my.connected = true
-    if (GLOBAL.GAME_SERVER_RETRY > 0) {
-      my.tryConnect++
-    }
+    } else {
+      my.connected = true
+      if (GLOBAL.GAME_SERVER_RETRY > 0) {
+        my.tryConnect++
+      }
 
-    JLog.warn(`Game server #${my.id} has an error: ${err.toString()}`)
+      JLog.warn(`Game server #${my.id} has an error: ${err.toString()}`)
+    }
   }
   function onGameClose (code) {
     my.connected = false
