@@ -139,9 +139,8 @@ DB.ready = function () {
   }, 600000)
   setInterval(function () {
     gameServers.forEach(function (v) {
-      console.log(v.socket)
       console.log(v.connected)
-      if (v.socket && v.connected) v.socket.send(`{"type":"seek"}`)
+      if (v.connected) v.socket.send(`{"type":"seek"}`)
       else v.seek = undefined
     })
   }, 4000)
