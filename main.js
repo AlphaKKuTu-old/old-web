@@ -31,7 +31,7 @@ const Exession = require('express-session')
 const Redission = require('connect-redis')(Exession)
 const Redis = require('redis')
 const Parser = require('body-parser')
-// const DDDoS = require('dddos')
+const DDDoS = require('dddos')
 const Server = Express()
 const DB = require('./db')
 const lib = require('kkutu-lib')
@@ -86,6 +86,7 @@ Server.set('views', path.join(__dirname, 'views'))
 Server.set('view engine', 'pug')
 Server.use(Express.static(path.join(__dirname, 'public')))
 Server.use(Parser.urlencoded({ extended: true }))
+Server.use(Parser.bodyParser.json())
 Server.use(Exession(sessionConfigure))
 Server.use(passport.initialize())
 Server.use(passport.session())
@@ -111,24 +112,23 @@ Server.use((req, res, next) => {
 if (GLOBAL.TRUST_PROXY) {
   Server.set('trust proxy', GLOBAL.TRUST_PROXY)
 }
-/* use this if you want
 
-DDDoS = new DDDoS({
+const DDoS = new DDDoS({
   maxWeight: 6,
   checkInterval: 10000,
   rules: [{
-    regexp: "^/(cf|dict|gwalli)",
+    regexp: '^/(cf|dict|gwalli)',
     maxWeight: 20,
-    errorData: "429 Too Many Requests"
+    errorData: '429 Too Many Requests'
   }, {
-    regexp: ".*",
-    errorData: "429 Too Many Requests"
+    regexp: '.*',
+    errorData: '429 Too Many Requests'
   }]
-});
-DDDoS.rules[0].logFunction = DDDoS.rules[1].logFunction = function(ip, path){
-  JLog.warn(`DoS from IP ${ip} on ${path}`);
-};
-Server.use(DDDoS.express()); */
+})
+DDoS.rules[0].logFunction = DDoS.rules[1].logFunction = (ip, path) => {
+  JLog.warn(`DoS from IP ${ip} on ${path}`)
+}
+Server.use(DDoS.express())
 
 WebInit.init(Server, true)
 DB.ready = function () {
