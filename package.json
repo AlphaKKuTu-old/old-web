@@ -28,7 +28,7 @@
     "express-session": "^1.15.6",
     "glob": "^7.1.2",
     "glob-promise": "^3.3.0",
-    "kkutu-lib": "github:small-sunshines/morikkutu-lib",
+    "kkutu-lib": "github:hatty163/morikkutu-lib",
     "node-sri": "^1.1.1",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
