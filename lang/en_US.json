@@ -1,14 +1,10 @@
 {
-	"__README__": "English table is not built yet due to the absence of my English skill. Please translate this if you are good at English.",
-
 	"GLOBAL": {
-		"GPL": "<div style='color: #666;'>Rule the words! KKuTu Online Copyright (C) 2018 small-sunshines(jioo0224@naver.com)<br>This program comes with ABSOLUTELY NO WARRANTY.<br>This is free software, and you are welcome to redistribute it under certain conditions.<br>For details visit the repository of this software: <a target='_blank' href='https://github.com/small-sunshines/morikkutu-web'>https://github.com/small-sunshines/morikkutu-web</a></div>",
-		
+		"GPL": "<div style='color: #666;'>글자로 놀자! 끄투 온라인 Copyright (C) 2018 AlphaKKuTu(admin@hatty163.kr)<br>이 프로그램은 제품에 대한 어떠한 형태의 보증도 제공되지 않습니다.<br>이 프로그램은 자유 소프트웨어이며 배포 규정을 만족시키는 조건 아래 자유롭게 재배포할 수 있습니다.<br>이에 대한 자세한 사항은 본 프로그램의 구현을 담은 다음 레포지토리에서 확인하십시오: <a target='_blank' href='https://github.com/AlphaKKuTu/web'>https://github.com/AlphaKKuTu/web</a></div>",
+
 		"CREATOR":	"개발자 블로그",
 		"HOME":		"FA{home}",
-		"KKT_FREE":		"끄투 커뮤니티",
-		"JEHU": "제휴서버",
-		"KKT_DNET": "끄투 닷넷",
+		"FORUM":	"포럼",
 		"DB":		"쪼롤백과",
 		"DB_CHAMP":		"챔피언",
 		"DB_ITEM":		"아이템",
@@ -112,7 +108,7 @@
 		"GROUP_Mfront": "모레미 전경"
 	},
 	"error": {
-		"title": "모리끄투",
+		"title": "알파끄투",
 		"400": "[#400] 잘못된 요청",
 		"400_e": "유효하지 않은 입력이 감지되어 이 오류가 발생했습니다. 필요한 입력값을 제대로 입력했는지 확인해 주세요.",
 		"429": "[#429] 과다한 요청",
@@ -121,7 +117,7 @@
 		"500_e": "예기치 못한 원인으로 내부 서버가 작동을 중지했습니다."
 	},
 	"login": {
-		"title": "모리끄투에 로그인",
+		"title": "알파끄투에 로그인",
 		"loginWith": "로그인 방법을 선택하세요.",
 		"withNaver": "네이버 아이디로 로그인",
 		"withFacebook": "페이스북 아이디로 로그인",
@@ -130,7 +126,7 @@
 		"withKakao": "카카오 아이디로 로그인",
 		"login_kkutu": "글자로 놀자! 끄투 온라인을 이용하시려면 로그인을 해 주세요.",
 		
-		"loginLegal": "로그인이 이루어지면 모리끄투가 공지하는 <a href='/agreement.html' target='_blank'>서비스 이용 약관</a> 및 <a href='/privacy.html' target='_blank'>개인정보 취급 방침</a>에 동의하게 됩니다."
+		"loginLegal": "로그인이 이루어지면 알파끄투가 공지하는 <a href='/agreement.html' target='_blank'>서비스 이용 약관</a> 및 <a href='/privacy.html' target='_blank'>개인정보 취급 방침</a>에 동의하게 됩니다."
 	},
 	"loginfail": {
 		"title": "로그인 실패",
@@ -159,11 +155,25 @@
 		"server_3": "레몬",
 		"server_4": "망고",
 		"server_5": "보리",
+		"server_6": "상추",
+		"server_7": "아욱",
+		"server_8": "자두",
+		"server_9": "참외",
+		"server_10": "커피",
+		"server_11": "토란",
+		"server_12": "포도",
+		"server_13": "호박",
+		"server_14": "꽈리",
+		"server_15": "딸기",
+		"server_16": "뽕잎",
+		"server_17": "쑥갓",
+		"server_18": "찔레",
+		"server_19": "고구마",
 		"serverEnter": "접속",
 		
 		"websocketUnsupport": "본 게임은 Internet Explorer(10), 크롬(16), 파이어폭스(11), 오페라(12.1), 사파리(6) 이상의 버전에서 지원합니다!<br>브라우저를 업데이트해 주세요.",
-		"dictionarySupport": "사전 정보 제공:<a href='http://stdweb2.korean.go.kr/' target='_blank'>국립국어원 표준국어대사전</a>, <a href='http://wordnet.princeton.edu' target='_blank'>WordNet</a><br><label style='color: #777777;'>WordNet 3.0 Copyright 2006 by Princeton University. All rights reserved.</label>",
-		"discord": "모리끄투 디스코드",
+		"dictionarySupport": "사전 정보 제공:<a href='http://wordnet.princeton.edu' target='_blank'>WordNet</a><br><label style='color: #777777;'>WordNet 3.0 Copyright 2006 by Princeton University. All rights reserved.</label>",
+		"discord": "알파끄투 디스코드",
 		"etcSupport": "도움:<a href='http://cafe.naver.com/sdbx' target='_blank'>샌드박스 :: SDBX</a>",
 		"welcome": "환영합니다.",
 		"welcomeTestServer": "테스트 서버에 접속했습니다. 본 서버는 특별한 공지 없이 폭발하거나 닫힐 수 있습니다.",
@@ -228,6 +238,7 @@
 		"turnError_405": "외래어",
 		"turnError_406": "깐깐!",
 		"turnError_407": "다른 주제",
+		"turnError_408": "캐릭터 비허용!",
 		"turnError_409": "이미 쓰인 단어",
 		"checkAgeAsk": "끄투에서는 본인 확인을 위해 생년월일을 입력받고 있습니다. 입력된 생년월일은 본인 확인 및 내부 정보 처리에만 이용되며 제3자에게 공개되지 않습니다.\n본인 확인을 진행합니까?",
 		"checkAgeNo": "입력 값이 올바르지 않습니다. 다시 확인해 주세요.",
@@ -344,7 +355,7 @@
 		"explSami": "세 글자 단어와 두 글자 단어를 번갈아가며 잇습니다.",
 		"optNo2": "2글자 금지",
 		"explNo2": "두 글자 단어의 사용을 막습니다.",
-		"optCharactor": "캐릭터",
+		"optCharacter": "캐릭터",
 		"explCharacter": "애니, 라이트 노벨, 만화의 캐릭터 이름을 사용할 수 있습니다.",
 		"optUnlimited": "무한정",
 		"explUnlimited": "그림퀴즈에서 나오는 단어의 길이를 무한정으로 조절합니다.",
@@ -365,7 +376,7 @@
 		"themeis": "단어의 주제: ",
 		"kpm": "<label style='font-size: 11px;'>타/분</label>",
 
-		"theme_IMS": "THE iDOLM@STER",
+		"theme_IMS": "THE IDOLM@STER",
 		"theme_VOC": "VOCALOID",
 		"theme_KTV": "국내 방송 프로그램",
 		"theme_KOT": "대한민국 철도역",
