@@ -1,12 +1,10 @@
 {
 	"GLOBAL": {
-		"GPL": "<div style='color: #666;'>글자로 놀자! 끄투 온라인 Copyright (C) 2018 볕뉘(jioo0224@naver.com)<br>이 프로그램은 제품에 대한 어떠한 형태의 보증도 제공되지 않습니다.<br>이 프로그램은 자유 소프트웨어이며 배포 규정을 만족시키는 조건 아래 자유롭게 재배포할 수 있습니다.<br>이에 대한 자세한 사항은 본 프로그램의 구현을 담은 다음 레포지토리에서 확인하십시오: <a target='_blank' href='https://github.com/small-sunshines/morikkutu-web'>https://github.com/small-sunshines/morikkutu-web</a></div>",
+		"GPL": "<div style='color: #666;'>글자로 놀자! 끄투 온라인 Copyright (C) 2018 AlphaKKuTu(admin@hatty163.kr)<br>이 프로그램은 제품에 대한 어떠한 형태의 보증도 제공되지 않습니다.<br>이 프로그램은 자유 소프트웨어이며 배포 규정을 만족시키는 조건 아래 자유롭게 재배포할 수 있습니다.<br>이에 대한 자세한 사항은 본 프로그램의 구현을 담은 다음 레포지토리에서 확인하십시오: <a target='_blank' href='https://github.com/AlphaKKuTu/web'>https://github.com/AlphaKKuTu/web</a></div>",
 
 		"CREATOR":	"개발자 블로그",
 		"HOME":		"FA{home}",
-		"KKT_FREE":		"끄투 커뮤니티",
-		"JEHU": "제휴서버",
-		"KKT_DNET": "끄투 닷넷",
+		"FORUM":	"포럼",
 		"DB":		"쪼롤백과",
 		"DB_CHAMP":		"챔피언",
 		"DB_ITEM":		"아이템",
@@ -110,7 +108,7 @@
 		"GROUP_Mfront": "모레미 전경"
 	},
 	"error": {
-		"title": "모리끄투",
+		"title": "알파끄투",
 		"400": "[#400] 잘못된 요청",
 		"400_e": "유효하지 않은 입력이 감지되어 이 오류가 발생했습니다. 필요한 입력값을 제대로 입력했는지 확인해 주세요.",
 		"429": "[#429] 과다한 요청",
@@ -119,7 +117,7 @@
 		"500_e": "예기치 못한 원인으로 내부 서버가 작동을 중지했습니다."
 	},
 	"login": {
-		"title": "모리끄투에 로그인",
+		"title": "알파끄투에 로그인",
 		"loginWith": "로그인 방법을 선택하세요.",
 		"withNaver": "네이버 아이디로 로그인",
 		"withFacebook": "페이스북 아이디로 로그인",
@@ -128,7 +126,7 @@
 		"withKakao": "카카오 아이디로 로그인",
 		"login_kkutu": "글자로 놀자! 끄투 온라인을 이용하시려면 로그인을 해 주세요.",
 		
-		"loginLegal": "로그인이 이루어지면 모리끄투가 공지하는 <a href='/agreement.html' target='_blank'>서비스 이용 약관</a> 및 <a href='/privacy.html' target='_blank'>개인정보 취급 방침</a>에 동의하게 됩니다."
+		"loginLegal": "로그인이 이루어지면 알파끄투가 공지하는 <a href='/agreement.html' target='_blank'>서비스 이용 약관</a> 및 <a href='/privacy.html' target='_blank'>개인정보 취급 방침</a>에 동의하게 됩니다."
 	},
 	"loginfail": {
 		"title": "로그인 실패",
@@ -175,7 +173,7 @@
 		
 		"websocketUnsupport": "본 게임은 Internet Explorer(10), 크롬(16), 파이어폭스(11), 오페라(12.1), 사파리(6) 이상의 버전에서 지원합니다!<br>브라우저를 업데이트해 주세요.",
 		"dictionarySupport": "사전 정보 제공:<a href='http://wordnet.princeton.edu' target='_blank'>WordNet</a><br><label style='color: #777777;'>WordNet 3.0 Copyright 2006 by Princeton University. All rights reserved.</label>",
-		"discord": "모리끄투 디스코드",
+		"discord": "알파끄투 디스코드",
 		"etcSupport": "도움:<a href='http://cafe.naver.com/sdbx' target='_blank'>샌드박스 :: SDBX</a>",
 		"welcome": "환영합니다.",
 		"welcomeTestServer": "테스트 서버에 접속했습니다. 본 서버는 특별한 공지 없이 폭발하거나 닫힐 수 있습니다.",
