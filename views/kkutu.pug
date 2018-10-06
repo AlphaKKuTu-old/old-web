@@ -114,6 +114,10 @@ block Middle
 			+SettingOption('only-waiting', L('onlyWaiting'), "width: 200px;")
 			h4
 			+SettingOption('only-unlock', L('onlyUnlock'), "width: 200px;")
+		select#change-bgm
+			optgroup(label='BGM을 선택하세요.')
+				option(value='kkutu', selected) 기본 BGM으로 변경
+				option(value='T001') BGM 변경 테스트
 		div.dialog-bar.tail-button
 			button#setting-ok= L('save')
 			button#setting-server= L('changeServer')
