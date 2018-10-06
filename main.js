@@ -114,7 +114,7 @@ if (GLOBAL.TRUST_PROXY) {
 }
 
 const DDoS = new DDDoS({
-  maxWeight: 30
+  maxWeight: 30,
   checkInterval: 10000,
   rules: [{
     regexp: '^/(cf|dict|gwalli)',
