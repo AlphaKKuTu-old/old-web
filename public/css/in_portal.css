@@ -16,15 +16,13 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#holder {
-	display: inline-block;
+#holder{
 	width: 200px;
 	text-align: center;
 	text-shadow: 0px 0px 4px #333;
 	font-weight: bold;
 }
-#logo {
-	display: inline-block;
+#logo{
 	margin-top: -20px;
 }
 #kkutu-bulletin{
@@ -32,9 +30,6 @@
 	margin-bottom: 5px;
 }
 
-#menu-bar {
-	float: right;margin-top: -95px;
-}
 #menu-bar a{
 	display: block;
 	float: left;
@@ -57,13 +52,10 @@
 	border-bottom-left-radius: inherit;
 	border-bottom-right-radius: inherit;
 }
-#game-start:hover {
-	font-size: 24px;
-	background-color: rgba(0, 0, 0, 0.5);
-}
+	#game-start:hover{ font-size: 24px; background-color: rgba(0, 0, 0, 0.5); }
 .server-list-box{
 	float: right;
-	width: 100%;
+	width: 320px;
 	background-color: rgba(0, 0, 0, 0.4);
 }
 .server-list-title{
@@ -75,64 +67,26 @@
 	margin: 0px 5px;
 	cursor: pointer;
 }
-#server-total {
-	color: #AAA;
-	font-size: 13px;
-}
-.server {
+.server{
 	float: left;
 	margin: 2px 0px;
-	width: 100%;
+	width: 320px;
 	height: 16px;
 	font-size: 13px;
 	cursor: pointer;
 }
-.server div{
-	float: left;
-}
-.server-status{
-	border-radius: 6px;
-	margin: 2px;
-	width: 12px;
-	height: 12px;
-}
-.ss-o {
-	background-color: #3E3;
-}
-.ss-p {
-	background-color: #EE3;
-}
-.ss-q {
-	background-color: #F55;
-}
-.ss-x {
-	background-color: #777;
-}
-.server-name {
-	width: 50px;
-}
-.server-people {
-	width: 136px;
-	height: 100%;
-}
-.server-people .graph-bar { 
-	background-image: url(/img/blue_gauge.png);
-}
-.server-people label {
-	position: relative;
-	display: block;
-	top: 0.15em;
-	width: 100%;
-	text-align: center;
-	font-size: 11px;
-}
-.server-enter {
-	width: 50px;
-	text-align: center;
-}
-.server:hover {
-	background-color: rgba(255, 255, 255, 0.1);
-}
+	.server>div{ float: left; }
+	.server-status{ border-radius: 6px; margin: 2px; width: 12px; height: 12px; }
+		.ss-o{ background-color: #3E3; }
+		.ss-p{ background-color: #EE3; }
+		.ss-q{ background-color: #F55; }
+		.ss-x{ background-color: #777; }
+	.server-name{ width: 60px; }
+	.server-people{ width: 190px; height: 100%; }
+		.server-people>.graph-bar{ background-image: url(/img/blue_gauge.png); }
+		.server-people>label{ position: relative; display: block; top: -14px; width: 100%; text-align: center; font-size: 11px; }
+	.server-enter{ width: 50px; text-align: center; }
+	.server:hover{ background-color: rgba(255, 255, 255, 0.1); }
 
 #Background{
 	animation: BGScroll 4s linear infinite;
@@ -140,72 +94,4 @@
 @keyframes BGScroll{
 	from{ background-position: 0px 0px; }
 	to{ background-position: -200px -200px; }
-}
-
-.ad {
-	float: left;
-	width: 100%;
-	margin-top: 0.8em !important;
-	margin-bottom: 0.8em !important;
-	border: 2px solid #CCC;
-	background-color: #EEE;
-	padding-top: 0.4em;
-	padding-bottom: 0.4em;
-	position: relative;
-	background: #EEE url('/img/404.png') no-repeat center;
-	background-size: 50px 50px;
-}
-.ad.small {
-	background-size: 30px 30px !important;
-}
-.ad p {
-	color: #777;
-	font-size: 0.4em;
-	position: absolute;
-	margin: 0;
-	bottom: 0;
-	right: 0;
-	margin-right: 4em;
-}
-
-#topDiv {
-	width: 200px;
-	margin: auto;
-}
-
-.jjoriping {
-	margin: auto;
-	margin-top: -70px;
-}
-
-.jjoObj.jjoEyeL {
-	left: 5.05em !important;
-	top: 1.5em !important;
-}
-.jjoObj.jjoNose {
-	left: 11.2em !important;
-	top: 1.21em !important;
-}
-.jjoObj.jjoEyeR {
-	left: 17.55em !important;
-	top: 1.5em !important;
-}
-.jjoDisplayBar {
-	width: 325px !important;
-	height: 85px !important;
-	margin: auto !important;
-}
-
-#menus {
-	width: 100%;
-	display: grid;
-	grid-gap: 10px;
-	grid-template-columns: 25% 48% 25%;
-}
-
-.box {
-	height: 100%;
-	width: 100%;
-	border: 2px solid #CCC;
-	background-color: #EEE;
 }
