@@ -12,3 +12,7 @@
 
 
 끄투의 원작자는 쪼리핑 님입니다. https://github.com/JJoriping
+
+#### 라이선스
+- 모든 소스 코드에 대해: [GNU 일반 공중 사용 라이선스](https://github.com/JJoriping/KKuTu/blob/master/LICENSE)
+- 모든 이미지 및 소리에 대해: [크리에이티브 커먼즈 라이선스 CC BY](https://creativecommons.org/licenses/by/4.0/)
