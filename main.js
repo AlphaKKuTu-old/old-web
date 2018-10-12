@@ -113,6 +113,7 @@ if (GLOBAL.TRUST_PROXY) {
   Server.set('trust proxy', GLOBAL.TRUST_PROXY)
 }
 
+/*
 const DDoS = new DDDoS({
   maxWeight: 30,
   checkInterval: 10000,
@@ -129,6 +130,7 @@ DDoS.rules[0].logFunction = DDoS.rules[1].logFunction = (ip, path) => {
   JLog.warn(`DoS from IP ${ip} on ${path}`)
 }
 Server.use(DDoS.express())
+*/
 
 WebInit.init(Server, true)
 DB.ready = function () {
